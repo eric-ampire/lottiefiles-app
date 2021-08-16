@@ -1,6 +1,6 @@
 <h1 align="center">Android Study Case</h1></br>
 <p align="center">  
-A demo Android Study Case app using compose and Hilt based on modern Android tech-stacks and MVI architecture. Fetching data from the network and integrating persisted data in the database via repository pattern.<br> Declarative UI version of the <a href="https://github.com/skydoves/DisneyMotions" target="_blank"> DisneyMotions </a> using compose.
+A demo Android Study Case app using compose and Hilt based on modern Android tech-stacks and MVI architecture. Fetching data from the network and integrating persisted data in the database via repository pattern using compose.
 </p>
 </br>
 
@@ -38,7 +38,7 @@ Go to the [Releases](https://github.com/eric-ampire/android-study-case/releases)
     - Clear Architecture pattern
 - Material Design & Animations
 - [Accompanist](https://github.com/google/accompanist) - A collection of extension libraries for Jetpack Compose.
-- [Orbit-MVI](https://github.com/skydoves/landscapist) - Jetpack Compose image loading library with shimmer & circular reveal animations.
+- [Orbit-MVI](https://github.com/orbit-mvi/orbit-mvi) - Orbit is a Redux/MVI-like library - but without the baggage. It's so simple we think of it as MVVM+.
 - [Retrofit2 & OkHttp3](https://github.com/square/retrofit) - construct the REST APIs and paging network data.
 - [Timber](https://github.com/JakeWharton/timber) - logging.
 
