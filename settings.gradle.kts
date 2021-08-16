@@ -16,3 +16,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "android-study-case"
 include(":app")
+include(":util")
+include(":i18n")

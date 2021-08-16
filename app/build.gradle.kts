@@ -74,6 +74,8 @@ android {
 
 dependencies {
 
+    implementation(project(":util"))
+
     implementation(Libs.activity_compose)
     implementation(Libs.navigation_compose)
     implementation(Libs.core_ktx)
