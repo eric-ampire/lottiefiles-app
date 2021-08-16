@@ -1,3 +1,11 @@
+plugins {
+    id("de.fayard.refreshVersions") version "0.11.0"
+}
+
+refreshVersions {
+    enableBuildSrcLibs()
+}
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -7,4 +15,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "android-study-case"
-include ':app'
+include(":app")
