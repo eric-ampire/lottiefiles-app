@@ -57,6 +57,7 @@ object Libs {
   const val hilt_gradle_plugin = "com.google.dagger:hilt-android-gradle-plugin:_"
   const val hilt_android = "com.google.dagger:hilt-android:_"
   const val hilt_android_compiler = "com.google.dagger:hilt-android-compiler:_"
+  const val hilt_navigation_compose = "androidx.hilt:hilt-navigation-compose:1.0.0-alpha03"
 
   const val junit4 = "junit:junit:_"
   const val junit_jupiter_api = "org.junit.jupiter:junit-jupiter-api:_"
