@@ -17,9 +17,9 @@ Go to the [Releases](https://github.com/eric-ampire/android-study-case/releases)
 
 ## Screenshots
 <p align="center">
-<img src="https://user-images.githubusercontent.com/24237865/93901108-238eb000-fd31-11ea-9fac-c9ba1eca146c.gif" width="32%"/>
-<img src="/preview/preview0.gif" width="32%"/>
-<img src="/preview/preview1.gif" width="32%"/>
+<img src="#" width="32%"/>
+<img src="#" width="32%"/>
+<img src="#" width="32%"/>
 </p>
 
 ## Tech stack & Open-source libraries
@@ -48,7 +48,8 @@ And __[follow](https://github.com/eric-ampire)__ me for my next creations! 🤩
 
 # License
 ```xml
-Designed and developed by 2020 skydoves (Jaewoong Eum)
+Designed and developed by 2021 eric-ampire (Eric Ampire)
+
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
