@@ -44,7 +44,7 @@ Go to the [Releases](https://github.com/eric-ampire/android-study-case/releases)
 
 ## Find this repository useful? :heart:
 Support it by joining __[stargazers](https://github.com/eric-ampire/android-study-case/stargazers)__ for this repository. :star: <br>
-And __[follow](https://github.com/eric-ampire)__ me for my next creations! 🤩
+And __[follow](https://twitter.com/eric_ampire)__ me for my next creations! 🤩
 
 # License
 ```xml
