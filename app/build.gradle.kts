@@ -7,7 +7,6 @@ plugins {
   kotlin("kapt")
   id("dagger.hilt.android.plugin")
   id("kotlin-android")
-  id("com.google.devtools.ksp") version "1.5.21-1.0.0-beta07"
 }
 
 kapt {
@@ -77,11 +76,13 @@ android {
 
 dependencies {
 
-  implementation(project(":util"))
+  implementation(project(":data"))
+  implementation(project(":i18n"))
 
   implementation(Libs.activity_compose)
   implementation(Libs.navigation_compose)
   implementation(Libs.core_ktx)
+  implementation(Libs.lifecycle_runtime_ktx)
   implementation(Libs.preference_ktx)
   implementation(Libs.appcompat)
   implementation(Libs.startup_runtime)
@@ -104,8 +105,6 @@ dependencies {
   implementation(Libs.accompanist_placeholder)
   implementation(Libs.accompanist_navigation_animation)
 
-  implementation(kotlin("reflect"))
-
   implementation(platform(Libs.kotlin_coroutine_bom))
   testImplementation(Libs.kotlin_coroutine_test)
 
@@ -113,15 +112,8 @@ dependencies {
   implementation(Libs.hilt_navigation_compose)
   kapt(Libs.hilt_android_compiler)
 
-  implementation(Libs.lifecycle_runtime_ktx)
-
   testImplementation(Libs.junit_jupiter_api)
   testImplementation(Libs.junit_jupiter_engine)
-
-  implementation(Libs.koin_android)
-  implementation(Libs.koin_androidx_compose)
-  implementation(Libs.koin_androidx_workmanager)
-  testImplementation(Libs.koin_test_junit5)
 
   implementation(Libs.ksp_api)
 
@@ -129,7 +121,7 @@ dependencies {
   implementation(Libs.orbit_mvi_viewmodel)
   testImplementation(Libs.orbit_mvi_test)
 
-  ksp(Libs.room_compiler)
+  kapt(Libs.room_compiler)
   implementation(Libs.room_runtime)
   testImplementation(Libs.room_testing)
 
@@ -137,6 +129,4 @@ dependencies {
   androidTestImplementation(Libs.mockk_android)
 
   debugImplementation(Libs.leakcanary_android)
-
-  implementation(Libs.timber)
 }
