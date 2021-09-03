@@ -28,7 +28,7 @@ Go to the [Releases](https://github.com/eric-ampire/android-study-case/releases)
 - Hilt (alpha) for dependency injection.
 - JetPack
     - Compose - A modern toolkit for building native Android UI.
-    - LiveData - notify domain layer data to views.
+    - Coroutines Flow - notify domain layer data to views.
     - Lifecycle - dispose observing data when lifecycle state changes.
     - ViewModel - UI related data holder, lifecycle aware.
     - Room Persistence - construct database.
@@ -39,7 +39,7 @@ Go to the [Releases](https://github.com/eric-ampire/android-study-case/releases)
 - Material Design & Animations
 - [Accompanist](https://github.com/google/accompanist) - A collection of extension libraries for Jetpack Compose.
 - [Orbit-MVI](https://github.com/orbit-mvi/orbit-mvi) - Orbit is a Redux/MVI-like library - but without the baggage. It's so simple we think of it as MVVM+.
-- [Retrofit2 & OkHttp3](https://github.com/square/retrofit) - construct the REST APIs and paging network data.
+- [Ktor](https://github.com/square/retrofit) - construct the REST APIs and paging network data.
 - [Timber](https://github.com/JakeWharton/timber) - logging.
 
 ## Find this repository useful? :heart:
@@ -48,7 +48,7 @@ And __[follow](https://github.com/eric-ampire)__ me for my next creations! 🤩
 
 # License
 ```xml
-Designed and developed by 2020 skydoves (Jaewoong Eum)
+Designed and developed by 2020 ericampire (Eric Ampire)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
