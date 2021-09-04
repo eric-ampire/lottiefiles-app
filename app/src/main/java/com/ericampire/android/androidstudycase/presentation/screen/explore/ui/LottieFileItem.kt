@@ -49,11 +49,21 @@ fun LottieFileItemView(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             verticalAlignment = Alignment.CenterVertically,
             content = {
-              CustomImageView(
+              Box(
                 modifier = Modifier
                   .size(44.dp)
                   .clip(CircleShape),
-                data = lottiefile.createdBy?.avatarUrl ?: "null",
+                content = {
+                  CustomImageView(
+                    modifier = Modifier.matchParentSize(),
+                    data = lottiefile.createdBy?.avatarUrl ?: "null",
+                  )
+                  Box(
+                    modifier = Modifier
+                      .matchParentSize()
+                      .background(color = AppColor.BlackOverlay001)
+                  )
+                }
               )
 
               Column(

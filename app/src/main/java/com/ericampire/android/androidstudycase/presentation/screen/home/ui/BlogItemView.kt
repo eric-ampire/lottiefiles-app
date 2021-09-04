@@ -1,5 +1,6 @@
 package com.ericampire.android.androidstudycase.presentation.screen.home.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -18,6 +19,7 @@ import com.ericampire.android.androidstudycase.domain.entity.Blog
 import com.ericampire.android.androidstudycase.domain.entity.Lottiefile
 import com.ericampire.android.androidstudycase.presentation.custom.CustomImageView
 import com.ericampire.android.androidstudycase.presentation.theme.AndroidStudyCaseTheme
+import com.ericampire.android.androidstudycase.presentation.theme.AppColor
 import com.ericampire.android.androidstudycase.util.BlogProvider
 import com.ericampire.android.androidstudycase.util.LottieFileProvider
 
@@ -36,13 +38,24 @@ fun BlogItemView(
     horizontalArrangement = Arrangement.spacedBy(12.dp),
     verticalAlignment = Alignment.CenterVertically,
     content = {
-      CustomImageView(
+      Box(
         modifier = Modifier
           .height(80.dp)
           .width(130.dp)
           .clip(MaterialTheme.shapes.medium),
-        data = blog.imageUrl,
+        content = {
+          CustomImageView(
+            modifier = Modifier.matchParentSize(),
+            data = blog.imageUrl,
+          )
+          Box(
+            modifier = Modifier
+              .matchParentSize()
+              .background(color = AppColor.BlackOverlay)
+          )
+        }
       )
+
 
       Text(
         maxLines = 3,
