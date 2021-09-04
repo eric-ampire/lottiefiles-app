@@ -122,7 +122,6 @@ dependencies {
   testImplementation(Libs.orbit_mvi_test)
 
   kapt(Libs.room_compiler)
-  implementation(Libs.room_runtime)
   testImplementation(Libs.room_testing)
 
   testImplementation(Libs.mockk_core)
