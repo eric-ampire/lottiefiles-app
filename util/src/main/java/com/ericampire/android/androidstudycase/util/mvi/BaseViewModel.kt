@@ -9,7 +9,7 @@ import org.orbitmvi.orbit.ContainerHost
 abstract class BaseViewModel<S: Any, E: Any, A> : ContainerHost<S, E>, ViewModel() {
   protected val pendingAction = MutableSharedFlow<A>()
 
-  protected fun submitAction(action: A) {
+  fun submitAction(action: A) {
     viewModelScope.launch {
       pendingAction.emit(action)
     }
