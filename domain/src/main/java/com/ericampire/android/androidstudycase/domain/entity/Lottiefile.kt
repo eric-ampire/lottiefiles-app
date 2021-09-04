@@ -1,14 +1,10 @@
 package com.ericampire.android.androidstudycase.domain.entity
 
-import androidx.room.*
-import com.ericampire.android.androidstudycase.domain.util.DateSerializer
-import com.ericampire.android.androidstudycase.util.room.DateConverter
-import kotlinx.serialization.Contextual
-import kotlinx.serialization.ExperimentalSerializationApi
-import java.util.*
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.PrimaryKey
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonNames
 
 @Serializable
 data class LottieFilesApiResponse(
@@ -37,13 +33,13 @@ data class LottieFilesPage(
 
 @Serializable
 @Entity
-class Lottiefile(
+data class Lottiefile(
   @PrimaryKey var id: Long? = null,
   var bgColor: String = "",
   var lottieUrl: String = "",
-  var gifUrl: String = "",
-  var videoUrl: String = "",
-  var imageUrl: String = "",
+  var gifUrl: String? = "",
+  var videoUrl: String? = "",
+  var imageUrl: String? = "",
   var name: String = "",
 //  @TypeConverters(DateConverter::class)
 //  @Serializable(with = DateSerializer::class)

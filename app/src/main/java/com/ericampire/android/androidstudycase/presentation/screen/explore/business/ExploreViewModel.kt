@@ -32,48 +32,30 @@ class ExploreViewModel  @Inject constructor(
   init {
     viewModelScope.launch {
       pendingAction.collectLatest { action ->
-        when(action) {
-          ExploreAction.FindFeaturedFile -> findFeaturedFile()
-          ExploreAction.FindPopularFile -> findPopularFile()
-          ExploreAction.FindRecentFile -> findRecentFile()
+        when (action) {
+          ExploreAction.FindFeaturedFile -> findFeaturedLottieFileUseCase(Unit).fetchData()
+          ExploreAction.FindPopularFile -> findPopularLottieFileUseCase(Unit).fetchData()
+          ExploreAction.FindRecentFile -> findRecentLottieFileUseCase(Unit).fetchData()
         }
       }
     }
   }
 
-  private fun Flow<Result<List<Lottiefile>>>.fetchData() = intent {
+  private fun Flow<Result<List<Lottiefile>>>.fetchData() = intent(registerIdling = false) {
     collect { result ->
-      when(result) {
+      when (result) {
         is Result.Error -> {
           val errorMessage = result.exception.localizedMessage ?: "Unknown Error"
+          reduce { state.copy(isLoading = false) }
           postSideEffect(ExploreEffect.ShowErrorMessage(errorMessage))
         }
-        Result.Loading -> {
-          postSideEffect(ExploreEffect.Loading)
+        Result.Loading -> reduce {
+          state.copy(isLoading = true)
         }
-        is Result.Success -> {
-          postSideEffect(ExploreEffect.Success)
-          reduce { state.copy(files = result.data) }
+        is Result.Success -> reduce {
+          state.copy(files = result.data, isLoading = false)
         }
       }
-    }
-  }
-
-  private fun findRecentFile() {
-    viewModelScope.launch {
-      findRecentLottieFileUseCase(Unit).fetchData()
-    }
-  }
-
-  private fun findPopularFile() {
-    viewModelScope.launch {
-      findPopularLottieFileUseCase(Unit).fetchData()
-    }
-  }
-
-  private fun findFeaturedFile() {
-    viewModelScope.launch {
-      findFeaturedLottieFileUseCase(Unit).fetchData()
     }
   }
 }

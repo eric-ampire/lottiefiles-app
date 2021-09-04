@@ -1,8 +1,10 @@
 package com.ericampire.android.androidstudycase.presentation.screen.explore.ui
 
-import androidx.compose.animation.Crossfade
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -10,27 +12,27 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringArrayResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.ericampire.android.androidstudycase.R
+import com.ericampire.android.androidstudycase.domain.entity.Lottiefile
+import com.ericampire.android.androidstudycase.presentation.custom.LoadingView
 import com.ericampire.android.androidstudycase.presentation.custom.TopActionBar
 import com.ericampire.android.androidstudycase.presentation.screen.explore.business.ExploreAction
 import com.ericampire.android.androidstudycase.presentation.screen.explore.business.ExploreEffect
 import com.ericampire.android.androidstudycase.presentation.screen.explore.business.ExploreViewModel
 import com.ericampire.android.androidstudycase.presentation.theme.AppColor
-import com.google.accompanist.insets.navigationBarsPadding
-import com.google.accompanist.insets.statusBarsPadding
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
+@ExperimentalMaterialApi
 @ExperimentalPagerApi
 @Composable
 fun ExploreScreen(
@@ -38,12 +40,22 @@ fun ExploreScreen(
   viewModel: ExploreViewModel
 ) {
 
-  val effects by viewModel.container.sideEffectFlow.collectAsState(ExploreEffect.Idle)
+  val coroutineScope = rememberCoroutineScope()
   val state by viewModel.container.stateFlow.collectAsState()
+  val context = LocalContext.current
 
   val tabItems = stringArrayResource(id = R.array.explore_item)
   val pagerState = rememberPagerState(pageCount = tabItems.size)
-  val coroutineScope = rememberCoroutineScope()
+
+  LaunchedEffect(viewModel) {
+    viewModel.container.sideEffectFlow.collect {
+      when (it) {
+        is ExploreEffect.ShowErrorMessage -> {
+          Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
+        }
+      }
+    }
+  }
 
   LaunchedEffect(viewModel) {
     viewModel.submitAction(ExploreAction.FindRecentFile)
@@ -62,7 +74,9 @@ fun ExploreScreen(
   Scaffold(
     topBar = {
       Column(
-        modifier = Modifier.fillMaxWidth().background(color = AppColor.Black001),
+        modifier = Modifier
+          .fillMaxWidth()
+          .background(color = AppColor.Black001),
         content = {
           TopActionBar()
           TabRow(
@@ -108,27 +122,37 @@ fun ExploreScreen(
       )
     },
     content = { contentPadding ->
-      Crossfade(modifier = Modifier.padding(contentPadding), targetState = effects) {
-        Box(
-          modifier = Modifier.fillMaxSize(),
-          contentAlignment = Alignment.Center,
-          content = {
-            when(it) {
-              ExploreEffect.Idle -> {
-                Timber.e("Idel")
-              }
-              ExploreEffect.Loading -> {
-
-              }
-              is ExploreEffect.ShowErrorMessage -> {
-
-              }
-              ExploreEffect.Success -> {
-                val data = state.files
-                Timber.e(data.toString())
-              }
-            }
+      Box(
+        modifier = Modifier
+          .padding(contentPadding)
+          .fillMaxSize(),
+        contentAlignment = Alignment.Center,
+        content = {
+          if (state.isLoading) {
+            LoadingView()
           }
+          if (state.files.isNotEmpty()) {
+            ExploreContent(files = state.files)
+          }
+        }
+      )
+    }
+  )
+}
+
+@ExperimentalMaterialApi
+@Composable
+fun ExploreContent(
+  modifier: Modifier = Modifier,
+  files: List<Lottiefile>
+) {
+  LazyColumn(
+    modifier = modifier.fillMaxSize(),
+    content = {
+      items(items = files, key = { it.toString() }) { lottieFile ->
+        LottieFileItemView(
+          lottiefile = lottieFile,
+          onClick = {}
         )
       }
     }
