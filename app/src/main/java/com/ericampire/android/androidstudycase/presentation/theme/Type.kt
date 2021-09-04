@@ -1,4 +1,4 @@
-package com.ericampire.android.androidstudycase.ui.theme
+package com.ericampire.android.androidstudycase.presentation.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

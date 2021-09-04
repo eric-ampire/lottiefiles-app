@@ -3,7 +3,7 @@ import de.fayard.refreshVersions.core.versionFor
 plugins {
   id("com.android.library")
   id("kotlin-android")
-  kotlin("plugin.serialization") version "1.5.21"
+  kotlin("plugin.serialization") version "1.5.20"
   kotlin("kapt")
 }
 
@@ -41,8 +41,7 @@ dependencies {
 
   api(Libs.ktor_client_core)
   api(Libs.ktor_serialization)
-
-  api(Libs.room_runtime)
+  api(Libs.joda_time)
 
   testImplementation(Libs.junit_jupiter_api)
   testImplementation(Libs.junit_jupiter_engine)

@@ -2,6 +2,10 @@
 <resources>
 
     <string name="app_name">Lottiefile App</string>
-
-
+    <string name="txt_home">Home</string>
+    <string name="txt_explore">Explore</string>
+    <string name="txt_preview">Preview</string>
+    <string name="txt_featured">Featured</string>
+    <string name="txt_recent">Recent</string>
+    <string name="txt_popular">Popular</string>
 </resources>

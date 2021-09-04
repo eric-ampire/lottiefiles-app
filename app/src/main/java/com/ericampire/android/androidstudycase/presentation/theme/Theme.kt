@@ -1,4 +1,4 @@
-package com.ericampire.android.androidstudycase.ui.theme
+package com.ericampire.android.androidstudycase.presentation.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
@@ -8,15 +8,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColors(
-  primary = Purple200,
-  primaryVariant = Purple700,
-  secondary = Teal200
+  primary = AppColor.Purple200,
+  primaryVariant = AppColor.Purple700,
+  secondary = AppColor.Teal200
 )
 
 private val LightColorPalette = lightColors(
-  primary = Purple500,
-  primaryVariant = Purple700,
-  secondary = Teal200,
+  primary = AppColor.Purple500,
+  primaryVariant = AppColor.Purple700,
+  secondary = AppColor.Teal200,
   background = Color.White,
   surface = Color.White,
   onPrimary = Color.White,

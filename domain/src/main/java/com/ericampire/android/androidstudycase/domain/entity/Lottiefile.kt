@@ -1,14 +1,14 @@
 package com.ericampire.android.androidstudycase.domain.entity
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
+import com.ericampire.android.androidstudycase.domain.util.DateSerializer
+import com.ericampire.android.androidstudycase.util.room.DateConverter
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.ExperimentalSerializationApi
 import java.util.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonNames
-import java.util.*
 
 @Serializable
 data class LottieFilesApiResponse(
@@ -16,10 +16,9 @@ data class LottieFilesApiResponse(
   val lottieFilesLottieFilesData: LottieFilesData
 )
 
-@ExperimentalSerializationApi
 @Serializable
 data class LottieFilesData(
-  @JsonNames("recent", "popular")
+  @SerialName("recent")
   val page: LottieFilesPage
 )
 
@@ -39,15 +38,17 @@ data class LottieFilesPage(
 @Serializable
 @Entity
 class Lottiefile(
-  @PrimaryKey val id: Long,
-  val bgColor: String,
-  val lottieUrl: String,
-  val gifUrl: String,
-  val videoUrl: String,
-  val imageUrl: String,
-  val name: String,
-  @Contextual val createdAt: Date,
-  val createdBy: Animator
+  @PrimaryKey var id: Long? = null,
+  var bgColor: String = "",
+  var lottieUrl: String = "",
+  var gifUrl: String = "",
+  var videoUrl: String = "",
+  var imageUrl: String = "",
+  var name: String = "",
+//  @TypeConverters(DateConverter::class)
+//  @Serializable(with = DateSerializer::class)
+  var createdAt: String = "",
+  @Ignore var createdBy: Animator? = null
 )
 
 

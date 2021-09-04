@@ -10,8 +10,8 @@ import kotlinx.serialization.Serializable
 @Entity
 data class Animator(
   @PrimaryKey
-  val name: String = "",
-  val avatarUrl: String = "",
+  var name: String = "",
+  var avatarUrl: String = "",
 )
 
 @Serializable

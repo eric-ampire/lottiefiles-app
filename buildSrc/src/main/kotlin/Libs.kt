@@ -32,6 +32,7 @@ object Libs {
   const val compose_ui_tooling = "androidx.compose.ui:ui-tooling:_"
   const val compose_ui_tooling_preview = "androidx.compose.ui:ui-tooling-preview:_"
 
+  const val androidx_lifecycle_viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:_"
   const val core_ktx = "androidx.core:core-ktx:_"
   const val lifecycle_runtime_ktx = "androidx.lifecycle:lifecycle-runtime-ktx:_"
   const val androidx_test_ext_junit = "androidx.test.ext:junit:_"
@@ -131,6 +132,7 @@ object Libs {
 
   const val room_compiler = "androidx.room:room-compiler:_"
   const val room_runtime = "androidx.room:room-runtime:_"
+  const val room_ktx = "androidx.room:room-ktx:_"
   const val room_testing = "androidx.room:room-testing:_"
 
   const val koin_core = "io.insert-koin:koin-core:_"
@@ -143,4 +145,6 @@ object Libs {
   const val orbit_mvi_viewmodel = "org.orbit-mvi:orbit-viewmodel:4.2.0"
   const val orbit_mvi_core = "org.orbit-mvi:orbit-core:4.2.0"
   const val orbit_mvi_test = "org.orbit-mvi:orbit-test:4.2.0"
+
+  const val joda_time = "net.danlew:android.joda:2.10.9"
 }

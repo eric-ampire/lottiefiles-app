@@ -1,6 +1,5 @@
 package com.ericampire.android.androidstudycase.data.di
 
-import com.ericampire.android.androidstudycase.data.datasource.animator.AnimatorDataSource
 import com.ericampire.android.androidstudycase.data.datasource.animator.LocalAnimatorDataSource
 import com.ericampire.android.androidstudycase.data.datasource.animator.RemoteAnimatorDataSource
 import com.ericampire.android.androidstudycase.data.datasource.blog.LocalBlogDataSource

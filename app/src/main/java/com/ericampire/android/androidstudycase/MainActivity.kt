@@ -8,31 +8,20 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.ericampire.android.androidstudycase.ui.theme.AndroidStudyCaseTheme
+import com.ericampire.android.androidstudycase.presentation.screen.main.ui.MainScreen
+import com.ericampire.android.androidstudycase.presentation.theme.AndroidStudyCaseTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent {
-      AndroidStudyCaseTheme {
-        // A surface container using the 'background' color from the theme
+      AndroidStudyCaseTheme(darkTheme = true) {
         Surface(color = MaterialTheme.colors.background) {
-          Greeting("Android")
+          MainScreen()
         }
       }
     }
-  }
-}
-
-@Composable
-fun Greeting(name: String) {
-  Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-  AndroidStudyCaseTheme {
-    Greeting("Android")
   }
 }

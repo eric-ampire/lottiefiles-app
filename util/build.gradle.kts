@@ -32,9 +32,15 @@ dependencies {
 
   api(project(":i18n"))
   implementation(Libs.core_ktx)
+  api(Libs.androidx_lifecycle_viewmodel_ktx)
+
+  api(Libs.room_runtime)
+  api(Libs.room_ktx)
 
   api(platform(Libs.kotlin_coroutine_bom))
   api(Libs.kotlin_coroutine_core)
+
+  api(Libs.orbit_mvi_core)
 
   testImplementation(Libs.junit_jupiter_api)
   testImplementation(Libs.junit_jupiter_engine)
