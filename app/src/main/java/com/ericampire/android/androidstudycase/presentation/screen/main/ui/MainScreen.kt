@@ -8,9 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Explore
-import androidx.compose.material.icons.rounded.Home
-import androidx.compose.material.icons.rounded.Scanner
+import androidx.compose.material.icons.rounded.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,7 +22,11 @@ import com.ericampire.android.androidstudycase.app.addExploreScreen
 import com.ericampire.android.androidstudycase.app.addHomeScreen
 import com.ericampire.android.androidstudycase.app.addPreviewScreen
 import com.ericampire.android.androidstudycase.util.Destination
+import com.google.accompanist.insets.navigationBarsPadding
+import com.google.accompanist.insets.statusBarsPadding
+import com.google.accompanist.pager.ExperimentalPagerApi
 
+@ExperimentalPagerApi
 @Composable
 fun MainScreen() {
   val navController = rememberNavController()
@@ -36,6 +38,7 @@ fun MainScreen() {
   )
 
   Scaffold(
+    modifier = Modifier.statusBarsPadding().navigationBarsPadding(),
     bottomBar = {
       BottomNavigation(
         backgroundColor = MaterialTheme.colors.background,
@@ -85,8 +88,8 @@ fun MainScreen() {
 fun getIconByIndex(index: Int): ImageVector {
   return when (index) {
     0 -> Icons.Rounded.Home
-    1 -> Icons.Rounded.Scanner
-    2 -> Icons.Rounded.Explore
+    1 -> Icons.Rounded.QrCodeScanner
+    2 -> Icons.Rounded.Escalator
     else -> Icons.Rounded.Home
   }
 }

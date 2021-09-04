@@ -9,7 +9,7 @@ import androidx.compose.ui.graphics.Color
 import com.google.accompanist.insets.ProvideWindowInsets
 
 private val DarkColorPalette = darkColors(
-  primary = AppColor.Purple200,
+  primary = AppColor.PrimaryColor,
   primaryVariant = AppColor.Purple700,
   secondary = AppColor.Teal200,
   background = Color.Black,
@@ -21,7 +21,7 @@ private val DarkColorPalette = darkColors(
 )
 
 private val LightColorPalette = lightColors(
-  primary = AppColor.Purple500,
+  primary = AppColor.PrimaryColorDark,
   primaryVariant = AppColor.Purple700,
   secondary = AppColor.Teal200,
   background = Color.White,

@@ -9,6 +9,7 @@ import com.ericampire.android.androidstudycase.presentation.screen.home.business
 import com.ericampire.android.androidstudycase.presentation.screen.home.ui.HomeScreen
 import com.ericampire.android.androidstudycase.presentation.screen.preview.ui.PreviewScreen
 import com.ericampire.android.androidstudycase.util.Destination
+import com.google.accompanist.pager.ExperimentalPagerApi
 
 fun NavGraphBuilder.addHomeScreen(navController: NavController) {
   composable(Destination.Home.route) {
@@ -19,6 +20,7 @@ fun NavGraphBuilder.addHomeScreen(navController: NavController) {
   }
 }
 
+@ExperimentalPagerApi
 fun NavGraphBuilder.addExploreScreen(navController: NavController) {
   composable(Destination.Explore.route) {
     ExploreScreen(

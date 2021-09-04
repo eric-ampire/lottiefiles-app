@@ -117,6 +117,8 @@ dependencies {
 
   implementation(Libs.ksp_api)
 
+  implementation(Libs.lottie_compose)
+
   implementation(Libs.orbit_mvi_core)
   implementation(Libs.orbit_mvi_viewmodel)
   testImplementation(Libs.orbit_mvi_test)

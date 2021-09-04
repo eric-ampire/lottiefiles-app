@@ -4,4 +4,5 @@ sealed interface ExploreEffect {
   data class ShowErrorMessage(val message: String) : ExploreEffect
   object Loading : ExploreEffect
   object Success : ExploreEffect
+  object Idle : ExploreEffect
 }

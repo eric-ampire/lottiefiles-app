@@ -1,37 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="notification_tabs">
-        <item>Commandes</item>
-        <item>Tout</item>
-    </string-array>
 
-    <string-array name="notification_channel_names">
-        <item>Nouveau fournisseur</item>
-        <item>Promotions</item>
-        <item>Commandes</item>
-        <item>Nouvelle mise à jour</item>
-        <item>Globale</item>
-    </string-array>
-
-    <string-array name="notification_channel_ids">
-        <item>stores</item>
-        <item>products</item>
-        <item>orders</item>
-        <item>global</item>
-        <item>default</item>
-    </string-array>
-
-    <string-array name="notification_channel_descriptions">
-        <item>Être notifié lorsqu\'un nouveau fournisseur est disponible sur Be Served.</item>
-        <item>Être notifié lorsqu\'il y a de nouvelles promotions.</item>
-        <item>Être notifié lorsque l\'état de votre commande change.</item>
-        <item>Être notifié lorsqu\'une nouvelle version de l\'application est disponible.</item>
-        <item>Autres notifications.</item>
-    </string-array>
-
-    <string-array name="history_items">
-        <item>En cours</item>
-        <item>Refusée</item>
-        <item>Historique</item>
+    <string-array name="explore_item">
+        <item>Recent</item>
+        <item>Featured</item>
+        <item>Popular</item>
     </string-array>
 </resources>
