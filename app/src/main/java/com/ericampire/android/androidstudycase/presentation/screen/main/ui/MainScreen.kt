@@ -1,23 +1,22 @@
 package com.ericampire.android.androidstudycase.presentation.screen.main.ui
 
-import androidx.compose.runtime.Composable
-import androidx.navigation.compose.rememberNavController
-import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.*
-import androidx.compose.runtime.*
+import androidx.compose.material.icons.rounded.Escalator
+import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.QrCodeScanner
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import com.ericampire.android.androidstudycase.app.addExploreScreen
 import com.ericampire.android.androidstudycase.app.addHomeScreen
 import com.ericampire.android.androidstudycase.app.addPreviewScreen
@@ -38,7 +37,9 @@ fun MainScreen() {
   )
 
   Scaffold(
-    modifier = Modifier.statusBarsPadding().navigationBarsPadding(),
+    modifier = Modifier
+      .statusBarsPadding()
+      .navigationBarsPadding(),
     bottomBar = {
       BottomNavigation(
         backgroundColor = MaterialTheme.colors.background,
@@ -61,6 +62,9 @@ fun MainScreen() {
               selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
               onClick = {
                 navController.navigate(screen.route) {
+                  popUpTo(navController.graph.findStartDestination().id) {
+                    saveState = true
+                  }
                   launchSingleTop = true
                   restoreState = true
                 }
