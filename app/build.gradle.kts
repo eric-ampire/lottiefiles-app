@@ -129,5 +129,5 @@ dependencies {
   testImplementation(Libs.mockk_core)
   androidTestImplementation(Libs.mockk_android)
 
-  debugImplementation(Libs.leakcanary_android)
+  debugImplementation(Libs.code_scanner)
 }
