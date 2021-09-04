@@ -6,11 +6,18 @@ import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import com.google.accompanist.insets.ProvideWindowInsets
 
 private val DarkColorPalette = darkColors(
   primary = AppColor.Purple200,
   primaryVariant = AppColor.Purple700,
-  secondary = AppColor.Teal200
+  secondary = AppColor.Teal200,
+  background = Color.Black,
+  surface = Color.Black,
+  onPrimary = Color.Black,
+  onSecondary = Color.White,
+  onBackground = Color.White,
+  onSurface = Color.White,
 )
 
 private val LightColorPalette = lightColors(
@@ -40,6 +47,10 @@ fun AndroidStudyCaseTheme(
     colors = colors,
     typography = Typography,
     shapes = Shapes,
-    content = content
+    content = {
+      ProvideWindowInsets {
+        content()
+      }
+    }
   )
 }
