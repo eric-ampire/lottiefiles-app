@@ -12,7 +12,7 @@ class LottieFileRepositoryImpl @Inject constructor(
   private val localDataSource: LottieFileDataSource,
   private val remoteDataSource: LottieFileDataSource,
 ) : LottieFileRepository {
-  override suspend fun findRecent(): Flow<Result<List<Lottiefile>>> {
+  override fun findRecent(): Flow<Result<List<Lottiefile>>> {
     return flow {
       try {
         val recentFiles = remoteDataSource.findRecent()
@@ -30,7 +30,7 @@ class LottieFileRepositoryImpl @Inject constructor(
     }
   }
 
-  override suspend fun findPopular(): Flow<Result<List<Lottiefile>>> {
+  override fun findPopular(): Flow<Result<List<Lottiefile>>> {
     return flow {
       try {
         val recentFiles = remoteDataSource.findPopular()
@@ -42,7 +42,7 @@ class LottieFileRepositoryImpl @Inject constructor(
     }
   }
 
-  override suspend fun findFeatured(): Flow<Result<List<Lottiefile>>> {
+  override fun findFeatured(): Flow<Result<List<Lottiefile>>> {
     return flow {
       try {
         val recentFiles = remoteDataSource.findFeatured()
