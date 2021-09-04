@@ -9,4 +9,7 @@
     <string name="txt_recent">Recent</string>
     <string name="txt_popular">Popular</string>
     <string name="txt_lottie_logo">Lottie Logo</string>
+    <string name="txt_browse_all">Browse all free Animation</string>
+    <string name="txt_browse_all_desc">Access to 1000s of Lottie animations</string>
+    <string name="txt_go_to_explore">Go to Explore</string>
 </resources>
