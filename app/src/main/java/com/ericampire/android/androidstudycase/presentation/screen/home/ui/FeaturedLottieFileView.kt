@@ -52,7 +52,7 @@ fun FeaturedLottieFileView(
               .width(170.dp),
             content = {
               LottieAnimation(
-                modifier = Modifier.wrapContentSize(),
+                modifier = Modifier.matchParentSize(),
                 composition = composition,
                 progress = progress,
               )
