@@ -24,6 +24,12 @@ fun PreviewScreen(
   var lottieFileUrl by remember { mutableStateOf("") }
   val context = LocalContext.current
 
+  DisposableEffect(true) {
+    onDispose {
+      codeScanner?.stopPreview()
+    }
+  }
+
   Scaffold(
     content = {
       if (lottieFileUrl.isNotEmpty()) {
