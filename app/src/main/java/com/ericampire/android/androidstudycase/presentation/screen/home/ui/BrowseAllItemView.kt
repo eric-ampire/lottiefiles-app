@@ -13,13 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.airbnb.lottie.compose.*
 import com.ericampire.android.androidstudycase.R
-import com.ericampire.android.androidstudycase.domain.entity.Lottiefile
 import com.ericampire.android.androidstudycase.presentation.theme.AndroidStudyCaseTheme
 import com.ericampire.android.androidstudycase.presentation.theme.AppColor
 
