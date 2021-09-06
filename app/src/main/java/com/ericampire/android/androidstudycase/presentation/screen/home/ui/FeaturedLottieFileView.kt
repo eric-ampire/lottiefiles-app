@@ -2,7 +2,6 @@ package com.ericampire.android.androidstudycase.presentation.screen.home.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
@@ -12,13 +11,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.airbnb.lottie.compose.*
 import com.ericampire.android.androidstudycase.domain.entity.Lottiefile
-import com.ericampire.android.androidstudycase.presentation.screen.explore.ui.LottieFileItemView
 import com.ericampire.android.androidstudycase.presentation.theme.AndroidStudyCaseTheme
 import com.ericampire.android.androidstudycase.presentation.theme.AppColor
 import com.ericampire.android.androidstudycase.util.LottieFileProvider
@@ -70,13 +67,11 @@ fun FeaturedLottieFileView(
                 maxLines = 1,
                 text = lottiefile.name,
                 style = MaterialTheme.typography.h6,
-                textAlign = TextAlign.Center,
               )
               Text(
                 text = lottiefile.createdBy?.name ?: "",
                 maxLines = 1,
                 style = MaterialTheme.typography.caption,
-                textAlign = TextAlign.Center,
               )
             }
           )

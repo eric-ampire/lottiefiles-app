@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.ericampire.android.androidstudycase.domain.entity.Animator
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AnimatorDao {
@@ -13,5 +14,5 @@ interface AnimatorDao {
   suspend fun save(animator: Animator)
 
   @Query("SELECT * FROM Animator")
-  suspend fun findAll(): List<Animator>
+  fun findAll(): Flow<List<Animator>>
 }

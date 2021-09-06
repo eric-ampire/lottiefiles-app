@@ -13,9 +13,16 @@ import javax.inject.Inject
 class RemoteAnimatorDataSource @Inject constructor(
   private val httpClient: HttpClient
 ) : AnimatorDataSource {
-  override suspend fun findAll(): List<Animator> {
-    val data = httpClient.get<AnimatorApiResponse>(ApiUrl.Animator.featured)
-    return data.animatorAnimatorData.featuredAnimators.results
+
+  override fun findAll(): Flow<Result<List<Animator>>> {
+    return flow {
+      try {
+        val data = httpClient.get<AnimatorApiResponse>(ApiUrl.Animator.featured)
+        emit(Result.Success(data.animatorAnimatorData.featuredAnimators.results))
+      } catch (e: Exception) {
+        emit(Result.Error(e))
+      }
+    }
   }
 
   override suspend fun save(animator: Animator) {

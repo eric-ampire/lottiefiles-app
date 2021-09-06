@@ -6,6 +6,7 @@ import com.ericampire.android.androidstudycase.app.room.AppDatabase
 import com.ericampire.android.androidstudycase.data.room.AnimatorDao
 import com.ericampire.android.androidstudycase.data.room.BlogDao
 import com.ericampire.android.androidstudycase.data.room.LottieFilesDao
+import com.ericampire.android.androidstudycase.data.room.UserDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,6 +24,11 @@ object RoomModule {
       AppDatabase::class.java, "database-name"
     )
     return db.build()
+  }
+
+  @Provides
+  fun provideUserDao(appDatabase: AppDatabase): UserDao {
+    return appDatabase.userDao
   }
 
   @Provides

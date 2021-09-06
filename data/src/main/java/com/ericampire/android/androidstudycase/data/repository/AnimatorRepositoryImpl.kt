@@ -6,8 +6,6 @@ import com.ericampire.android.androidstudycase.domain.repository.AnimatorReposit
 import com.ericampire.android.androidstudycase.util.Result
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 
@@ -16,19 +14,19 @@ class AnimatorRepositoryImpl @Inject constructor(
   private val localDataSource: AnimatorDataSource,
 ) : AnimatorRepository {
   override fun findAll(): Flow<Result<List<Animator>>> {
-    return flow {
-      try {
-        refreshData()
-        emit(Result.Success(localDataSource.findAll()))
-      } catch (e: Exception) {
-        emit(Result.Error(e))
-      }
-    }
+    refreshData()
+    return localDataSource.findAll()
   }
 
-  private suspend fun refreshData() {
-    remoteDataSource.findAll().forEach {
-      localDataSource.save(it)
+  private fun refreshData() {
+    suspend {
+      remoteDataSource.findAll().collect {
+        if (it is Result.Success) {
+          it.data.forEach { animator ->
+            localDataSource.save(animator)
+          }
+        }
+      }
     }
   }
 }

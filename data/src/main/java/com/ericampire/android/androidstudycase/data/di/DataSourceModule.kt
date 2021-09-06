@@ -9,9 +9,12 @@ import com.ericampire.android.androidstudycase.data.datasource.blog.RemoteBlogDa
 import com.ericampire.android.androidstudycase.data.datasource.lottiefiles.LocalLottieFileDataSource
 import com.ericampire.android.androidstudycase.data.datasource.lottiefiles.LottieFileDataSource
 import com.ericampire.android.androidstudycase.data.datasource.lottiefiles.RemoteLottieFileDataSource
+import com.ericampire.android.androidstudycase.data.datasource.user.LocalUserDataSource
+import com.ericampire.android.androidstudycase.data.datasource.user.UserDataSource
 import com.ericampire.android.androidstudycase.data.room.AnimatorDao
 import com.ericampire.android.androidstudycase.data.room.BlogDao
 import com.ericampire.android.androidstudycase.data.room.LottieFilesDao
+import com.ericampire.android.androidstudycase.data.room.UserDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -60,6 +63,13 @@ object DataSourceModule {
     dao: BlogDao
   ): BlogDataSource {
     return LocalBlogDataSource(dao)
+  }
+
+  @Provides
+  fun provideLocalUserDataSource(
+    dao: UserDao
+  ): UserDataSource {
+    return LocalUserDataSource(dao)
   }
 
   @Provides

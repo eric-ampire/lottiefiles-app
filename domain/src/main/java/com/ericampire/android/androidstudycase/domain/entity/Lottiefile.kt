@@ -1,7 +1,8 @@
 package com.ericampire.android.androidstudycase.domain.entity
 
+import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
-import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -40,11 +41,9 @@ data class Lottiefile(
   var gifUrl: String? = "",
   var videoUrl: String? = "",
   var imageUrl: String? = "",
-  var name: String = "",
-//  @TypeConverters(DateConverter::class)
-//  @Serializable(with = DateSerializer::class)
+  @ColumnInfo(name = "file_name") var name: String = "",
   var createdAt: String = "",
-  @Ignore var createdBy: Animator? = null
+  @Embedded var createdBy: Animator? = null
 )
 
 

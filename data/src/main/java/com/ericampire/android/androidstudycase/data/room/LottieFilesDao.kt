@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.ericampire.android.androidstudycase.domain.entity.Lottiefile
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface LottieFilesDao {
@@ -12,11 +13,11 @@ interface LottieFilesDao {
   suspend fun save(lottiefile: Lottiefile)
 
   @Query("SELECT * FROM Lottiefile")
-  suspend fun findPopular(): List<Lottiefile>
+  fun findPopular(): Flow<List<Lottiefile>>
 
   @Query("SELECT * FROM Lottiefile")
-  suspend fun findFeatured(): List<Lottiefile>
+  fun findFeatured(): Flow<List<Lottiefile>>
 
   @Query("SELECT * FROM Lottiefile")
-  suspend fun findRecent(): List<Lottiefile>
+  fun findRecent(): Flow<List<Lottiefile>>
 }

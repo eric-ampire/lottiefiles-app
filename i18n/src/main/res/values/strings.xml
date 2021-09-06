@@ -12,4 +12,6 @@
     <string name="txt_browse_all">Browse all free Animation</string>
     <string name="txt_browse_all_desc">Access to 1000s of Lottie animations</string>
     <string name="txt_go_to_explore">Go to Explore</string>
+    <string name="txt_login">Login</string>
+    <string name="txt_hello_stranger">Hello Stranger</string>
 </resources>

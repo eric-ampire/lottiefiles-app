@@ -6,12 +6,15 @@ import com.ericampire.android.androidstudycase.data.datasource.blog.LocalBlogDat
 import com.ericampire.android.androidstudycase.data.datasource.blog.RemoteBlogDataSource
 import com.ericampire.android.androidstudycase.data.datasource.lottiefiles.LocalLottieFileDataSource
 import com.ericampire.android.androidstudycase.data.datasource.lottiefiles.RemoteLottieFileDataSource
+import com.ericampire.android.androidstudycase.data.datasource.user.LocalUserDataSource
 import com.ericampire.android.androidstudycase.data.repository.AnimatorRepositoryImpl
 import com.ericampire.android.androidstudycase.data.repository.BlogRepositoryImpl
 import com.ericampire.android.androidstudycase.data.repository.LottieFileRepositoryImpl
+import com.ericampire.android.androidstudycase.data.repository.UserRepositoryImpl
 import com.ericampire.android.androidstudycase.domain.repository.AnimatorRepository
 import com.ericampire.android.androidstudycase.domain.repository.BlogRepository
 import com.ericampire.android.androidstudycase.domain.repository.LottieFileRepository
+import com.ericampire.android.androidstudycase.domain.repository.UserRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +29,7 @@ object RepositoryModule {
   fun provideAnimatorRepository(
     localDataSource: LocalAnimatorDataSource,
     remoteDataSource: RemoteAnimatorDataSource,
-  ) : AnimatorRepository {
+  ): AnimatorRepository {
     return AnimatorRepositoryImpl(
       localDataSource = localDataSource,
       remoteDataSource = remoteDataSource
@@ -34,10 +37,19 @@ object RepositoryModule {
   }
 
   @Provides
+  fun provideUserRepository(
+    localDataSource: LocalUserDataSource,
+  ): UserRepository {
+    return UserRepositoryImpl(
+      localDataSource = localDataSource,
+    )
+  }
+
+  @Provides
   fun provideLottieFileRepository(
     localDataSource: LocalLottieFileDataSource,
     remoteDataSource: RemoteLottieFileDataSource,
-  ) : LottieFileRepository {
+  ): LottieFileRepository {
     return LottieFileRepositoryImpl(
       localDataSource = localDataSource,
       remoteDataSource = remoteDataSource

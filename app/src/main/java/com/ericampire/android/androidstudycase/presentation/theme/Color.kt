@@ -5,6 +5,8 @@ import androidx.compose.ui.graphics.Color
 
 
 object AppColor {
+  val Teal = Color(0xFF1C7373)
+  val PaleBlue = Color(0xFFD3F6F6)
   val PrimaryColor = Color(0xFF2BEAED)
   val PrimaryColorDark = Color(0xFF006B78)
   val Purple700 = Color(0xFF3700B3)
