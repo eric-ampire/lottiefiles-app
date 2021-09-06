@@ -3,8 +3,15 @@ package com.ericampire.android.androidstudycase.util
 import com.ericampire.android.androidstudycase.domain.entity.Animator
 import com.ericampire.android.androidstudycase.domain.entity.Blog
 import com.ericampire.android.androidstudycase.domain.entity.Lottiefile
+import com.ericampire.android.androidstudycase.domain.entity.User
 
 object PreviewData {
+  object User {
+    val data = listOf(
+      User(1, "Eric Ampire", "https://avatars.githubusercontent.com/u/32017617?v=4")
+    )
+  }
+
   object Blog {
     val data = listOf(
       Blog(

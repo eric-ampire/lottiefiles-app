@@ -4,6 +4,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import com.ericampire.android.androidstudycase.domain.entity.Animator
 import com.ericampire.android.androidstudycase.domain.entity.Blog
 import com.ericampire.android.androidstudycase.domain.entity.Lottiefile
+import com.ericampire.android.androidstudycase.domain.entity.User
 
 
 class BlogProvider : PreviewParameterProvider<Blog> {
@@ -21,4 +22,9 @@ class AnimatorProvider : PreviewParameterProvider<Animator> {
 class LottieFileProvider : PreviewParameterProvider<Lottiefile> {
   override val values: Sequence<Lottiefile>
     get() = PreviewData.Lottiefile.data.asSequence()
+}
+
+class UserProvider : PreviewParameterProvider<User> {
+  override val values: Sequence<User>
+    get() = PreviewData.User.data.asSequence()
 }
