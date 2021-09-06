@@ -14,7 +14,7 @@ class RemoteLottieFileDataSource @Inject constructor(
   private val httpClient: HttpClient
 ) : LottieFileDataSource {
 
-  private suspend fun find(url: String): Flow<Result<List<Lottiefile>>> {
+  private fun find(url: String): Flow<Result<List<Lottiefile>>> {
     return flow {
       try {
         val data = httpClient.get<LottieFilesApiResponse>(url)
@@ -25,15 +25,15 @@ class RemoteLottieFileDataSource @Inject constructor(
     }
   }
 
-  override suspend fun findRecent(): Flow<Result<List<Lottiefile>>> {
+  override fun findRecent(): Flow<Result<List<Lottiefile>>> {
     return find(ApiUrl.LottieFile.recent)
   }
 
-  override suspend fun findPopular(): Flow<Result<List<Lottiefile>>> {
+  override fun findPopular(): Flow<Result<List<Lottiefile>>> {
     return find(ApiUrl.LottieFile.popular)
   }
 
-  override suspend fun findFeatured(): Flow<Result<List<Lottiefile>>> {
+  override fun findFeatured(): Flow<Result<List<Lottiefile>>> {
     return find(ApiUrl.LottieFile.featured)
   }
 
