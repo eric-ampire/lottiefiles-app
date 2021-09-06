@@ -3,6 +3,7 @@ package com.ericampire.android.androidstudycase.domain.di
 import com.ericampire.android.androidstudycase.domain.repository.AnimatorRepository
 import com.ericampire.android.androidstudycase.domain.repository.BlogRepository
 import com.ericampire.android.androidstudycase.domain.repository.LottieFileRepository
+import com.ericampire.android.androidstudycase.domain.repository.UserRepository
 import com.ericampire.android.androidstudycase.domain.usecase.*
 import com.ericampire.android.androidstudycase.util.IoDispatcher
 import dagger.Module
@@ -22,6 +23,22 @@ object UseCaseModule {
     @IoDispatcher dispatcher: CoroutineDispatcher
   ): FindFeaturedAnimatorUseCase {
     return FindFeaturedAnimatorUseCase(repository, dispatcher)
+  }
+
+  @Provides
+  fun provideSaveUserUseCase(
+    repository: UserRepository,
+    @IoDispatcher dispatcher: CoroutineDispatcher
+  ): SaveUserUseCase {
+    return SaveUserUseCase(repository, dispatcher)
+  }
+
+  @Provides
+  fun provideFindUsersUseCase(
+    repository: UserRepository,
+    @IoDispatcher dispatcher: CoroutineDispatcher
+  ): FindUsersUseCase {
+    return FindUsersUseCase(repository, dispatcher)
   }
 
   @Provides
