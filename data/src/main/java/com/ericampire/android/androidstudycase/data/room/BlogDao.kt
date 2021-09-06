@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.ericampire.android.androidstudycase.domain.entity.Blog
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface BlogDao {
@@ -12,5 +13,5 @@ interface BlogDao {
   suspend fun save(blog: Blog)
 
   @Query("SELECT * FROM Blog")
-  suspend fun findAll(): List<Blog>
+  fun findAll(): Flow<List<Blog>>
 }
