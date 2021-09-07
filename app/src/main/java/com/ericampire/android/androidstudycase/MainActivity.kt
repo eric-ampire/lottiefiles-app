@@ -9,12 +9,15 @@ import androidx.compose.material.Surface
 import com.ericampire.android.androidstudycase.presentation.screen.main.ui.MainScreen
 import com.ericampire.android.androidstudycase.presentation.theme.AndroidStudyCaseTheme
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
   @ExperimentalMaterialApi
   @ExperimentalPagerApi
+  @ExperimentalPermissionsApi
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent {

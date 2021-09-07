@@ -102,6 +102,7 @@ dependencies {
   implementation(Libs.accompanist_pager)
   implementation(Libs.accompanist_glide)
   implementation(Libs.accompanist_pager_indicators)
+  implementation(Libs.accompanist_permissions)
   implementation(Libs.accompanist_placeholder)
   implementation(Libs.accompanist_navigation_animation)
 

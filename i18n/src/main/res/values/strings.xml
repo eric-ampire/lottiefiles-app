@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="txt_featured_animation">Featured Animations</string>
+    <string name="txt_open_setting">Open Settings</string>
     <string name="app_name">Lottiefile App</string>
     <string name="txt_home">Home</string>
     <string name="txt_explore">Explore</string>
@@ -16,4 +17,8 @@
     <string name="txt_hello_stranger">Hello Stranger</string>
     <string name="txt_featured_animator">Featured Animators</string>
     <string name="txt_latest_story">Latest Stories</string>
+    <string name="txt_permission_not_available">Permission Not available</string>
+    <string name="txt_feature_not_available">Feature not available</string>
+    <string name="txt_camera_permssion_required">The camera is important for this app. Please grant the permission.</string>
+    <string name="txt_permission_denied">Camera permission denied. See this FAQ with information about why we need this permission. Please, grant us access on the Settings screen.</string>
 </resources>

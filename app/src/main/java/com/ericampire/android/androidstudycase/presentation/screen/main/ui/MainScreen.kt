@@ -25,9 +25,12 @@ import com.ericampire.android.androidstudycase.util.Destination
 import com.google.accompanist.insets.navigationBarsPadding
 import com.google.accompanist.insets.statusBarsPadding
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
 
 @ExperimentalMaterialApi
 @ExperimentalPagerApi
+@ExperimentalPermissionsApi
+
 @Composable
 fun MainScreen() {
   val navController = rememberNavController()

@@ -10,6 +10,7 @@ import com.ericampire.android.androidstudycase.presentation.screen.login.ui.Logi
 import com.ericampire.android.androidstudycase.presentation.screen.preview.ui.PreviewScreen
 import com.ericampire.android.androidstudycase.util.Destination
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
 
 @ExperimentalMaterialApi
 fun NavGraphBuilder.addHomeScreen(navController: NavController) {
@@ -34,6 +35,7 @@ fun NavGraphBuilder.addLoginScreen(navController: NavController) {
   }
 }
 
+@ExperimentalPermissionsApi
 fun NavGraphBuilder.addPreviewScreen(navController: NavController) {
   composable(Destination.Preview.route) {
     PreviewScreen(navController = navController)
