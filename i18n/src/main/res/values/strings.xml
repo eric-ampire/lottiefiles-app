@@ -21,4 +21,6 @@
     <string name="txt_feature_not_available">Feature not available</string>
     <string name="txt_camera_permssion_required">The camera is important for this app. Please grant the permission.</string>
     <string name="txt_permission_denied">Camera permission denied. See this FAQ with information about why we need this permission. Please, grant us access on the Settings screen.</string>
+    <string name="txt_connect_with_google">Continue with Google</string>
+    <string name="txt_get_started">Get started for free</string>
 </resources>

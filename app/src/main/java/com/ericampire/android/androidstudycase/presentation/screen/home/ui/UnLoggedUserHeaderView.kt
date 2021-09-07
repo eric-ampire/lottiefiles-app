@@ -44,7 +44,7 @@ fun UnLoggedUserHeaderView(
         content = {
           Text(
             maxLines = 1,
-            text = "Monday September 4",
+            text = "Monday 4 September",
             style = MaterialTheme.typography.button.copy(
               color = Color.Gray
             ),

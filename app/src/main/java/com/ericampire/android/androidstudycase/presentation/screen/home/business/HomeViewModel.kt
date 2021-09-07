@@ -3,17 +3,17 @@ package com.ericampire.android.androidstudycase.presentation.screen.home.busines
 import com.airbnb.mvrx.MavericksViewModelFactory
 import com.ericampire.android.androidstudycase.app.hilt.AssistedViewModelFactory
 import com.ericampire.android.androidstudycase.app.hilt.hiltMavericksViewModelFactory
-import com.ericampire.android.androidstudycase.domain.usecase.FindFeaturedAnimatorUseCase
-import com.ericampire.android.androidstudycase.domain.usecase.FindFeaturedBlogUseCase
-import com.ericampire.android.androidstudycase.domain.usecase.FindFeaturedLottieFileUseCase
-import com.ericampire.android.androidstudycase.domain.usecase.FindUsersUseCase
+import com.ericampire.android.androidstudycase.domain.usecase.*
+import com.ericampire.android.androidstudycase.util.PreviewData
 import com.ericampire.android.androidstudycase.util.data
 import com.ericampire.android.androidstudycase.util.mvi.BaseViewModel
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 class HomeViewModel @AssistedInject constructor(
@@ -21,7 +21,8 @@ class HomeViewModel @AssistedInject constructor(
   private val findFeaturedBlogUseCase: FindFeaturedBlogUseCase,
   private val findFeaturedAnimatorUseCase: FindFeaturedAnimatorUseCase,
   private val findUsersUseCase: FindUsersUseCase,
-  private val findFeaturedLottieFileUseCase: FindFeaturedLottieFileUseCase
+  private val findFeaturedLottieFileUseCase: FindFeaturedLottieFileUseCase,
+  private val saveUserUseCase: SaveUserUseCase
 ) : BaseViewModel<HomeViewState, HomeAction>(initialState) {
 
 
@@ -30,25 +31,45 @@ class HomeViewModel @AssistedInject constructor(
       pendingAction.collectLatest { action ->
         when (action) {
           HomeAction.FetchData -> fetchData()
+          HomeAction.Login -> login()
+          HomeAction.FetchCurrentUser -> fetchCurrentUser()
         }
       }
     }
   }
 
+  private fun login() {
+    viewModelScope.launch {
+      suspend {
+        delay(2000)
+        saveUserUseCase(PreviewData.User.data.first()).data!!
+      }.execute {
+        copy(login = it)
+      }
+    }
+  }
+
+  private fun fetchCurrentUser() {
+    viewModelScope.launch {
+      findUsersUseCase(Unit).map {
+        it.data?.firstOrNull()
+      }.execute {
+        copy(currentUser = it)
+      }
+    }
+  }
+
   private fun fetchData() {
-    val userFlow = findUsersUseCase(Unit)
     val storiesFlow = findFeaturedBlogUseCase(Unit)
     val animatorsFlow = findFeaturedAnimatorUseCase(Unit)
     val animationsFlow = findFeaturedLottieFileUseCase(Unit)
 
     combine(
-      userFlow,
       storiesFlow,
       animationsFlow,
       animatorsFlow
-    ) { user, stories, anim, animators ->
+    ) { stories, anim, animators ->
       HomeContentData(
-        user = user.data?.firstOrNull(),
         blog = stories.data ?: emptyList(),
         featuredAnimators = animators.data ?: emptyList(),
         featuredLottieFile = anim.data ?: emptyList(),

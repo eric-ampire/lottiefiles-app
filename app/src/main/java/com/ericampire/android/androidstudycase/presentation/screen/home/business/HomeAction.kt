@@ -2,4 +2,6 @@ package com.ericampire.android.androidstudycase.presentation.screen.home.busines
 
 sealed interface HomeAction {
   object FetchData : HomeAction
+  object Login : HomeAction
+  object FetchCurrentUser : HomeAction
 }

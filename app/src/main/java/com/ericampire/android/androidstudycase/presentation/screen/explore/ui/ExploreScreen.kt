@@ -140,8 +140,16 @@ fun ExploreScreen(
               }
               is Success -> {
                 val animations = it.invoke()
-                HorizontalPager(state = pagerState) {
-                  ExploreContent(files = animations)
+                if (animations.isEmpty()) {
+                  // Todo: Empty instead of Loading View
+                  LoadingAnimation(
+                    waveColor = MaterialTheme.colors.primary.copy(alpha = 0.5f),
+                    arcColor = MaterialTheme.colors.primaryVariant
+                  )
+                } else {
+                  HorizontalPager(state = pagerState) {
+                    ExploreContent(files = animations)
+                  }
                 }
               }
               is Fail -> {

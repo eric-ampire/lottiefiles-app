@@ -1,5 +1,6 @@
 package com.ericampire.android.androidstudycase.app
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
@@ -11,6 +12,7 @@ import com.ericampire.android.androidstudycase.util.Destination
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 
+@ExperimentalAnimationApi
 @ExperimentalMaterialApi
 fun NavGraphBuilder.addHomeScreen(navController: NavController) {
   composable(Destination.Home.route) {

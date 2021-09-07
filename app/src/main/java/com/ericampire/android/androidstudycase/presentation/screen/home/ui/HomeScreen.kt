@@ -1,6 +1,7 @@
 package com.ericampire.android.androidstudycase.presentation.screen.home.ui
 
 import androidx.compose.animation.Crossfade
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -9,16 +10,16 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -29,6 +30,8 @@ import com.airbnb.mvrx.Uninitialized
 import com.airbnb.mvrx.compose.collectAsState
 import com.airbnb.mvrx.compose.mavericksViewModel
 import com.ericampire.android.androidstudycase.R
+import com.ericampire.android.androidstudycase.app.App
+import com.ericampire.android.androidstudycase.domain.entity.User
 import com.ericampire.android.androidstudycase.presentation.custom.CustomImageView
 import com.ericampire.android.androidstudycase.presentation.custom.LoadingAnimation
 import com.ericampire.android.androidstudycase.presentation.custom.TopActionBar
@@ -37,9 +40,10 @@ import com.ericampire.android.androidstudycase.presentation.screen.home.business
 import com.ericampire.android.androidstudycase.presentation.screen.home.business.HomeViewModel
 import com.ericampire.android.androidstudycase.presentation.screen.home.business.HomeViewState
 import com.ericampire.android.androidstudycase.presentation.theme.AppColor
-import com.ericampire.android.androidstudycase.util.Destination
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
+@ExperimentalAnimationApi
 @ExperimentalMaterialApi
 @Composable
 fun HomeScreen(
@@ -48,56 +52,87 @@ fun HomeScreen(
 ) {
 
   val state by viewModel.collectAsState(HomeViewState::contentData)
+  val loginState by viewModel.collectAsState(HomeViewState::login)
+  val userState by viewModel.collectAsState(HomeViewState::currentUser)
+
+  val bottomSheetState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
+  val coroutineScope = rememberCoroutineScope()
+
+  val context = LocalContext.current
 
   LaunchedEffect(viewModel) {
     viewModel.submitAction(HomeAction.FetchData)
+    viewModel.submitAction(HomeAction.FetchCurrentUser)
   }
 
-  Scaffold(
-    topBar = {
-      Column(
-        modifier = Modifier
-          .fillMaxWidth()
-          .background(color = AppColor.Black001),
-        content = {
-          TopActionBar()
-        }
+  LaunchedEffect(loginState) {
+    if (loginState is Success) {
+      App.restart(context)
+    }
+  }
+
+  ModalBottomSheetLayout(
+    sheetShape = RoundedCornerShape(topEnd = 24.dp, topStart = 24.dp),
+    sheetState = bottomSheetState,
+    sheetContent = {
+      LoginBottomSheet(
+        onLoginClick = {
+          viewModel.submitAction(HomeAction.Login)
+        },
+        isLoading = loginState is Loading
       )
     },
-    content = { contentPadding ->
-      Crossfade(modifier = Modifier.padding(contentPadding), targetState = state) {
-        Box(
-          modifier = Modifier.fillMaxSize(),
-          contentAlignment = Alignment.Center,
-          content = {
-            when (it) {
-              Uninitialized -> {
-                LoadingAnimation(
-                  waveColor = MaterialTheme.colors.primary.copy(alpha = 0.5f),
-                  arcColor = MaterialTheme.colors.primaryVariant
-                )
-              }
-              is Loading -> {
-                LoadingAnimation(
-                  waveColor = MaterialTheme.colors.primary.copy(alpha = 0.5f),
-                  arcColor = MaterialTheme.colors.primaryVariant
-                )
-              }
-              is Success -> {
-                HomeContent(
-                  state = it.invoke(),
-                  onLoginClick = {
-                    navController.navigate(Destination.Login.route)
-                  }
-                )
-              }
-              is Fail -> {
-                Timber.e(it.error.localizedMessage)
-              }
+    content = {
+      Scaffold(
+        topBar = {
+          Column(
+            modifier = Modifier
+              .fillMaxWidth()
+              .background(color = AppColor.Black001),
+            content = {
+              TopActionBar()
             }
+          )
+        },
+        content = { contentPadding ->
+          Crossfade(modifier = Modifier.padding(contentPadding), targetState = state) {
+            Box(
+              modifier = Modifier.fillMaxSize(),
+              contentAlignment = Alignment.Center,
+              content = {
+                when (it) {
+                  Uninitialized -> {
+                    LoadingAnimation(
+                      waveColor = MaterialTheme.colors.primary.copy(alpha = 0.5f),
+                      arcColor = MaterialTheme.colors.primaryVariant
+                    )
+                  }
+                  is Loading -> {
+                    LoadingAnimation(
+                      waveColor = MaterialTheme.colors.primary.copy(alpha = 0.5f),
+                      arcColor = MaterialTheme.colors.primaryVariant
+                    )
+                  }
+                  is Success -> {
+                    HomeContent(
+                      state = it.invoke(),
+                      currentUser = userState.invoke(),
+                      onLoginClick = {
+                        coroutineScope.launch {
+                          bottomSheetState.animateTo(targetValue = ModalBottomSheetValue.Expanded)
+                        }
+                      }
+                    )
+                  }
+                  is Fail -> {
+                    Timber.e(it.error.localizedMessage)
+                  }
+                }
+              }
+            )
           }
-        )
-      }
+        }
+      )
     }
   )
 }
@@ -107,6 +142,7 @@ fun HomeScreen(
 fun HomeContent(
   modifier: Modifier = Modifier,
   state: HomeContentData,
+  currentUser: User? = null,
   onLoginClick: () -> Unit
 ) {
   LazyColumn(
@@ -117,10 +153,10 @@ fun HomeContent(
     verticalArrangement = Arrangement.spacedBy(16.dp),
     content = {
       item {
-        if (state.user == null) {
+        if (currentUser == null) {
           UnLoggedUserHeaderView(onLoginClick = onLoginClick)
         } else {
-          LoggedUserHeaderView(user = state.user)
+          LoggedUserHeaderView(user = currentUser)
         }
       }
 

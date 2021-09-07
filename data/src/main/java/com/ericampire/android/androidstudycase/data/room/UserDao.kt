@@ -2,6 +2,7 @@ package com.ericampire.android.androidstudycase.data.room
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
 import com.ericampire.android.androidstudycase.domain.entity.User
 import kotlinx.coroutines.flow.Flow
@@ -9,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface UserDao {
 
-  @Insert
+  @Insert(onConflict = REPLACE)
   fun save(user: User)
 
   @Query("SELECT * FROM User")

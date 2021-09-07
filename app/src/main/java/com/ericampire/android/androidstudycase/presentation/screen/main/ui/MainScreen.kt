@@ -1,5 +1,6 @@
 package com.ericampire.android.androidstudycase.presentation.screen.main.ui
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -29,7 +30,7 @@ import com.google.accompanist.permissions.ExperimentalPermissionsApi
 @ExperimentalMaterialApi
 @ExperimentalPagerApi
 @ExperimentalPermissionsApi
-
+@ExperimentalAnimationApi
 @Composable
 fun MainScreen() {
   val navController = rememberNavController()
