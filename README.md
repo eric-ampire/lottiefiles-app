@@ -1,6 +1,7 @@
-<h1 align="center">Android Study Case</h1></br>
+<h1 align="center">Lottiefiles App</h1></br>
 <p align="center">  
-A demo Android Study Case app using compose and Hilt based on modern Android tech-stacks and MVI architecture. Fetching data from the network and integrating persisted data in the database via repository pattern using compose.
+Lottiefiles App is an Android application built using jetpack compose and Hilt, based on modern Android technology stacks and the MVI architecture. 
+The application is a clone of the [Lottiefiles](https://lottiefiles.com/mobile) mobile application and allows the user to retrieve and save animations, animators and articles locally from an API rest
 </p>
 </br>
 
@@ -13,7 +14,7 @@ A demo Android Study Case app using compose and Hilt based on modern Android tec
 </p>
 
 ## Download
-Go to the [Releases](https://github.com/eric-ampire/android-study-case/releases) to download the latest APK.
+Go to the [Releases](https://github.com/eric-ampire/lottiefiles-app/releases) to download the latest APK.
 
 ## Screenshots
 <p align="center">
@@ -37,13 +38,18 @@ Go to the [Releases](https://github.com/eric-ampire/android-study-case/releases)
     - MVI Architecture (Declarative View - Intent - Model)
     - Clear Architecture pattern
 - Material Design & Animations
+- [Lottie Android](https://airbnb.design/lottie/) - Lottie is a library that renders After Effects animations in real time, allowing apps to use animations as easily as they use static images.
 - [Accompanist](https://github.com/google/accompanist) - A collection of extension libraries for Jetpack Compose.
-- [Orbit-MVI](https://github.com/orbit-mvi/orbit-mvi) - Orbit is a Redux/MVI-like library - but without the baggage. It's so simple we think of it as MVVM+.
+- [Maverics](https://airbnb.io/mavericks/#/) - Mavericks is an Android MVI framework that is both easy to learn yet powerful enough for the most complex flows
 - [Ktor](https://github.com/square/retrofit) - construct the REST APIs and paging network data.
-- [Timber](https://github.com/JakeWharton/timber) - logging.
+- [Timber](https://github.com/JakeWharton/timber) - Logging.
+
+## Challenge and difficulties encountered
+* The API was not complete and the stories and animators returned by the API did not have IDs, I had to find a strategy to assign IDs to data that did not have them to avoid duplication in the database. 
+* Animations didn't come with any information about whether an animation was popular, recent or featured, so I had to add an extra field to make the queries properly.
 
 ## Find this repository useful? :heart:
-Support it by joining __[stargazers](https://github.com/eric-ampire/android-study-case/stargazers)__ for this repository. :star: <br>
+Support it by joining __[stargazers](https://github.com/eric-ampire/lottiefiles-app/stargazers)__ for this repository. :star: <br>
 And __[follow](https://github.com/eric-ampire)__ me for my next creations! 🤩
 
 # License
