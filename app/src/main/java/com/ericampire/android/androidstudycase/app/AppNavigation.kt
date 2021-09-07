@@ -6,7 +6,6 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.ericampire.android.androidstudycase.presentation.screen.explore.ui.ExploreScreen
 import com.ericampire.android.androidstudycase.presentation.screen.home.ui.HomeScreen
-import com.ericampire.android.androidstudycase.presentation.screen.login.ui.LoginScreen
 import com.ericampire.android.androidstudycase.presentation.screen.preview.ui.PreviewScreen
 import com.ericampire.android.androidstudycase.util.Destination
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -24,14 +23,6 @@ fun NavGraphBuilder.addHomeScreen(navController: NavController) {
 fun NavGraphBuilder.addExploreScreen(navController: NavController) {
   composable(Destination.Explore.route) {
     ExploreScreen(navController = navController)
-  }
-}
-
-@ExperimentalMaterialApi
-@ExperimentalPagerApi
-fun NavGraphBuilder.addLoginScreen(navController: NavController) {
-  composable(Destination.Login.route) {
-    LoginScreen(navController = navController)
   }
 }
 

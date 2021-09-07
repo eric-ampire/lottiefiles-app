@@ -10,7 +10,7 @@ import com.google.accompanist.insets.ProvideWindowInsets
 
 private val DarkColorPalette = darkColors(
   primary = AppColor.PrimaryColor,
-  primaryVariant = AppColor.Purple700,
+  primaryVariant = AppColor.PrimaryColor,
   secondary = AppColor.Teal200,
   background = Color.Black,
   surface = Color.Black,
@@ -22,7 +22,7 @@ private val DarkColorPalette = darkColors(
 
 private val LightColorPalette = lightColors(
   primary = AppColor.PrimaryColorDark,
-  primaryVariant = AppColor.Purple700,
+  primaryVariant = AppColor.PrimaryColor,
   secondary = AppColor.Teal200,
   background = Color.White,
   surface = Color.White,

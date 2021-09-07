@@ -19,7 +19,6 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.ericampire.android.androidstudycase.app.addExploreScreen
 import com.ericampire.android.androidstudycase.app.addHomeScreen
-import com.ericampire.android.androidstudycase.app.addLoginScreen
 import com.ericampire.android.androidstudycase.app.addPreviewScreen
 import com.ericampire.android.androidstudycase.util.Destination
 import com.google.accompanist.insets.navigationBarsPadding
@@ -88,7 +87,6 @@ fun MainScreen() {
           addHomeScreen(navController = navController)
           addPreviewScreen(navController = navController)
           addExploreScreen(navController = navController)
-          addLoginScreen(navController = navController)
         }
       )
     },
