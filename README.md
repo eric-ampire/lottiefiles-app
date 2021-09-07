@@ -1,9 +1,9 @@
-<h1 align="center">Lottiefiles App</h1></br>
+<h1 align="center">Lottiefiles App</h1><br>
 <p align="center">  
 Lottiefiles App is an Android application built using jetpack compose and Hilt, based on modern Android technology stacks and the MVI architecture. 
 The application is a clone of the [Lottiefiles](https://lottiefiles.com/mobile) mobile application and allows the user to retrieve and save animations, animators and articles locally from an API rest
 </p>
-</br>
+<br>
 
 <p align="center">
   <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
@@ -46,12 +46,9 @@ Go to the [Releases](https://github.com/eric-ampire/lottiefiles-app/releases) to
 * The API was not complete and the stories and animators returned by the API did not have IDs, I had to find a strategy to assign IDs to data that did not have them to avoid duplication in the database. 
 * Animations didn't come with any information about whether an animation was popular, recent or featured, so I had to add an extra field to make the queries properly.
 
-## Find this repository useful? :heart:
-Support it by joining __[stargazers](https://github.com/eric-ampire/lottiefiles-app/stargazers)__ for this repository. :star: <br>
-And __[follow](https://github.com/eric-ampire)__ me for my next creations! 🤩
-
 # License
-```xml
+
+```
 Designed and developed by 2020 ericampire (Eric Ampire)
 
 Licensed under the Apache License, Version 2.0 (the "License");

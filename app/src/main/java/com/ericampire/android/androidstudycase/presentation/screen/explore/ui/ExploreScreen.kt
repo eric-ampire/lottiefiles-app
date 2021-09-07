@@ -32,6 +32,8 @@ import com.ericampire.android.androidstudycase.presentation.screen.explore.busin
 import com.ericampire.android.androidstudycase.presentation.screen.explore.business.ExploreViewModel
 import com.ericampire.android.androidstudycase.presentation.screen.explore.business.ExploreViewState
 import com.ericampire.android.androidstudycase.presentation.theme.AppColor
+import com.ericampire.android.androidstudycase.util.extension.copyTextToClipboard
+import com.ericampire.android.androidstudycase.util.extension.downloadAndShare
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.pagerTabIndicatorOffset
@@ -55,6 +57,11 @@ fun ExploreScreen(
   val tabItems = stringArrayResource(id = R.array.explore_item)
   val pagerState = rememberPagerState(pageCount = tabItems.size)
 
+
+  val bottomSheetState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
+  var selectedAnimation by remember { mutableStateOf<Lottiefile?>(null) }
+  var fileUrl by remember { mutableStateOf<String?>(null) }
+
   LaunchedEffect(viewModel) {
     viewModel.submitAction(ExploreAction.FindRecentFile)
   }
@@ -69,96 +76,144 @@ fun ExploreScreen(
     }
   }
 
-  Scaffold(
-    topBar = {
-      Column(
-        modifier = Modifier
-          .fillMaxWidth()
-          .background(color = AppColor.Black001),
-        content = {
-          TopActionBar()
-          TabRow(
-            modifier = Modifier.fillMaxWidth(),
-            selectedTabIndex = pagerState.currentPage,
-            backgroundColor = Color.Transparent,
-            indicator = { tabPositions ->
-              TabRowDefaults.Indicator(
-                modifier = Modifier
-                  .pagerTabIndicatorOffset(pagerState, tabPositions)
-                  .padding(horizontal = 32.dp)
-                  .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp)),
-                height = 3.dp,
-                color = MaterialTheme.colors.primary
-              )
-            },
-            tabs = {
-              tabItems.forEachIndexed { index, title ->
-                Tab(
-                  selected = index == pagerState.currentPage,
-                  selectedContentColor = MaterialTheme.colors.primary,
-                  unselectedContentColor = Color.White,
-                  onClick = {
-                    coroutineScope.launch {
-                      pagerState.animateScrollToPage(index)
-                    }
-                  },
-                  content = {
-                    Text(
-                      modifier = Modifier.padding(vertical = 12.dp),
-                      text = title,
-                      style = MaterialTheme.typography.h6.copy(
-                        fontWeight = FontWeight.Normal
-                      ),
-                      textAlign = TextAlign.Center,
-                    )
-                  }
-                )
-              }
-            }
-          )
+  LaunchedEffect(fileUrl) {
+    if (fileUrl != null) {
+      context.downloadAndShare(
+        url = fileUrl!!,
+        onError = {
+          Timber.e(it)
+        },
+        onSuccess = {
+          selectedAnimation = null
+          fileUrl = null
+          coroutineScope.launch {
+            bottomSheetState.hide()
+          }
         }
       )
+    }
+  }
+
+
+  ModalBottomSheetLayout(
+    sheetShape = RoundedCornerShape(topEnd = 24.dp, topStart = 24.dp),
+    sheetState = bottomSheetState,
+    sheetContent = {
+      ShareBottomSheet(
+        lottiefile = selectedAnimation,
+        isLoading = fileUrl != null,
+        onCopyLink = {
+          context.copyTextToClipboard(it)
+          coroutineScope.launch {
+            bottomSheetState.hide()
+          }
+        },
+        onShareGifFile = { fileUrl = it },
+        onShareJsonFile = { fileUrl = it },
+        onShareVideoFile = { fileUrl = it }
+      )
     },
-    content = { contentPadding ->
-      Crossfade(modifier = Modifier.padding(contentPadding), targetState = state) {
-        Box(
-          modifier = Modifier.fillMaxSize(),
-          contentAlignment = Alignment.Center,
-          content = {
-            when (it) {
-              Uninitialized -> {
-                LoadingAnimation(
-                  waveColor = MaterialTheme.colors.primary.copy(alpha = 0.5f),
-                  arcColor = MaterialTheme.colors.primaryVariant
-                )
-              }
-              is Loading -> {
-                LoadingAnimation(
-                  waveColor = MaterialTheme.colors.primary.copy(alpha = 0.5f),
-                  arcColor = MaterialTheme.colors.primaryVariant
-                )
-              }
-              is Success -> {
-                val animations = it.invoke()
-                if (animations.isEmpty()) {
-                  // Todo: Empty instead of Loading View
-                  LoadingAnimation(
-                    waveColor = MaterialTheme.colors.primary.copy(alpha = 0.5f),
-                    arcColor = MaterialTheme.colors.primaryVariant
+    content = {
+      Scaffold(
+        topBar = {
+          Column(
+            modifier = Modifier
+              .fillMaxWidth()
+              .background(color = AppColor.Black001),
+            content = {
+              TopActionBar()
+              TabRow(
+                modifier = Modifier.fillMaxWidth(),
+                selectedTabIndex = pagerState.currentPage,
+                backgroundColor = Color.Transparent,
+                indicator = { tabPositions ->
+                  TabRowDefaults.Indicator(
+                    modifier = Modifier
+                      .pagerTabIndicatorOffset(pagerState, tabPositions)
+                      .padding(horizontal = 32.dp)
+                      .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp)),
+                    height = 3.dp,
+                    color = MaterialTheme.colors.primary
                   )
-                } else {
-                  HorizontalPager(state = pagerState) {
-                    ExploreContent(files = animations)
+                },
+                tabs = {
+                  tabItems.forEachIndexed { index, title ->
+                    Tab(
+                      selected = index == pagerState.currentPage,
+                      selectedContentColor = MaterialTheme.colors.primary,
+                      unselectedContentColor = Color.White,
+                      onClick = {
+                        coroutineScope.launch {
+                          pagerState.animateScrollToPage(index)
+                        }
+                      },
+                      content = {
+                        Text(
+                          modifier = Modifier.padding(vertical = 12.dp),
+                          text = title,
+                          style = MaterialTheme.typography.h6.copy(
+                            fontWeight = FontWeight.Normal
+                          ),
+                          textAlign = TextAlign.Center,
+                        )
+                      }
+                    )
+                  }
+                }
+              )
+            }
+          )
+        },
+        content = { contentPadding ->
+          Crossfade(modifier = Modifier.padding(contentPadding), targetState = state) {
+            Box(
+              modifier = Modifier.fillMaxSize(),
+              contentAlignment = Alignment.Center,
+              content = {
+                when (it) {
+                  Uninitialized -> {
+                    LoadingAnimation(
+                      waveColor = MaterialTheme.colors.primary.copy(alpha = 0.5f),
+                      arcColor = MaterialTheme.colors.primaryVariant
+                    )
+                  }
+                  is Loading -> {
+                    LoadingAnimation(
+                      waveColor = MaterialTheme.colors.primary.copy(alpha = 0.5f),
+                      arcColor = MaterialTheme.colors.primaryVariant
+                    )
+                  }
+                  is Success -> {
+                    val animations = it.invoke()
+                    if (animations.isEmpty()) {
+                      // Todo: Empty instead of Loading View
+                      LoadingAnimation(
+                        waveColor = MaterialTheme.colors.primary.copy(alpha = 0.5f),
+                        arcColor = MaterialTheme.colors.primaryVariant
+                      )
+                    } else {
+                      HorizontalPager(state = pagerState) {
+                        ExploreContent(
+                          files = animations,
+                          onShareClick = {
+                            selectedAnimation = it
+                            coroutineScope.launch {
+                              bottomSheetState.animateTo(ModalBottomSheetValue.Expanded)
+                            }
+                          }
+                        )
+                      }
+                    }
+                  }
+                  is Fail -> {
+                    Timber.e(it.error.localizedMessage)
                   }
                 }
               }
-              is Fail -> {
-                Timber.e(it.error.localizedMessage)
-              }
-            }
+            )
           }
-        )
-      }
+        }
+      )
     }
   )
 }
@@ -167,6 +222,7 @@ fun ExploreScreen(
 @Composable
 private fun ExploreContent(
   modifier: Modifier = Modifier,
+  onShareClick: (Lottiefile) -> Unit,
   files: List<Lottiefile>
 ) {
   LazyColumn(
@@ -184,7 +240,8 @@ private fun ExploreContent(
       items(items = files, key = { it.toString() }) { lottieFile ->
         LottieFileItemView(
           lottiefile = lottieFile,
-          onClick = {}
+          onClick = {},
+          onShareClick = onShareClick,
         )
 
         Divider(

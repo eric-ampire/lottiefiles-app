@@ -130,5 +130,5 @@ dependencies {
   testImplementation(Libs.mockk_core)
   androidTestImplementation(Libs.mockk_android)
 
-  debugImplementation(Libs.code_scanner)
+  implementation(Libs.code_scanner)
 }

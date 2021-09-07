@@ -148,4 +148,5 @@ object Libs {
 
   const val joda_time = "net.danlew:android.joda:2.10.9"
   const val code_scanner = "com.budiyev.android:code-scanner:2.1.0"
+  const val fetch = "com.mindorks.android:prdownloader:0.6.0"
 }

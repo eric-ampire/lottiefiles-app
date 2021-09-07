@@ -5,6 +5,8 @@ import androidx.compose.ui.graphics.Color
 
 
 object AppColor {
+  val SlateGray = Color(0xFF606E7C)
+  val Arsenic = Color(0xFF3C3C3C)
   val Teal = Color(0xFF1C7373)
   val PaleBlue = Color(0xFFD3F6F6)
   val PrimaryColor = Color(0xFF2BEAED)

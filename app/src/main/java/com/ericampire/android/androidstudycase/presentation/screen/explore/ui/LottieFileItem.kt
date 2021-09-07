@@ -31,7 +31,8 @@ import com.ericampire.android.androidstudycase.util.LottieFileProvider
 fun LottieFileItemView(
   modifier: Modifier = Modifier,
   lottiefile: Lottiefile,
-  onClick: (Lottiefile) -> Unit
+  onClick: (Lottiefile) -> Unit,
+  onShareClick: (Lottiefile) -> Unit,
 ) {
   Card(
     modifier = modifier,
@@ -89,7 +90,9 @@ fun LottieFileItemView(
             onLikeClick = { /*TODO*/ },
             onCommentClick = { /*TODO*/ },
             onAddCollectionClick = { /*TODO*/ },
-            onShareClick = { }
+            onShareClick = {
+              onShareClick(lottiefile)
+            }
           )
         }
       )
@@ -203,7 +206,8 @@ fun LottiefileItemViewPreview(@PreviewParameter(LottieFileProvider::class) data:
       content = {
         LottieFileItemView(
           lottiefile = data,
-          onClick = {}
+          onClick = {},
+          onShareClick = {},
         )
       }
     )
