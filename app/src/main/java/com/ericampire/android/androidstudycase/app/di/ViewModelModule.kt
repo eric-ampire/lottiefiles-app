@@ -1,47 +1,30 @@
 package com.ericampire.android.androidstudycase.app.di
 
-import com.ericampire.android.androidstudycase.domain.usecase.*
+import com.ericampire.android.androidstudycase.app.hilt.AssistedViewModelFactory
+import com.ericampire.android.androidstudycase.app.hilt.MavericksViewModelComponent
+import com.ericampire.android.androidstudycase.app.hilt.ViewModelKey
 import com.ericampire.android.androidstudycase.presentation.screen.explore.business.ExploreViewModel
 import com.ericampire.android.androidstudycase.presentation.screen.home.business.HomeViewModel
-import com.ericampire.android.androidstudycase.presentation.screen.preview.business.PreviewViewModel
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
+import dagger.multibindings.IntoMap
 
 @Module
-@InstallIn(ViewModelComponent::class)
-object ViewModelModule {
+@InstallIn(MavericksViewModelComponent::class)
+interface ViewModelModule {
 
-  @Provides
+  @Binds
+  @IntoMap
+  @ViewModelKey(HomeViewModel::class)
   fun provideHomeViewModel(
-    findFeaturedAnimatorUseCase: FindFeaturedAnimatorUseCase,
-    findFeaturedBlogUseCase: FindFeaturedBlogUseCase
-  ): HomeViewModel {
-    return HomeViewModel(
-      findFeaturedAnimatorUseCase = findFeaturedAnimatorUseCase,
-      findFeaturedBlogUseCase = findFeaturedBlogUseCase
-    )
-  }
+    factory: HomeViewModel.Factory
+  ): AssistedViewModelFactory<*, *>
 
-  @Provides
+  @Binds
+  @IntoMap
+  @ViewModelKey(ExploreViewModel::class)
   fun provideExploreViewModel(
-    findFeaturedAnimatorUseCase: FindFeaturedAnimatorUseCase,
-    findFeaturedBlogUseCase: FindFeaturedBlogUseCase
-  ): PreviewViewModel {
-    return PreviewViewModel()
-  }
-
-  @Provides
-  fun providePreview(
-    findPopularLottieFileUseCase: FindPopularLottieFileUseCase,
-    findRecentLottieFileUseCase: FindRecentLottieFileUseCase,
-    findFeaturedLottieFileUseCase: FindFeaturedLottieFileUseCase
-  ): ExploreViewModel {
-    return ExploreViewModel(
-      findPopularLottieFileUseCase = findPopularLottieFileUseCase,
-      findRecentLottieFileUseCase = findRecentLottieFileUseCase,
-      findFeaturedLottieFileUseCase = findFeaturedLottieFileUseCase
-    )
-  }
+    factory: ExploreViewModel.Factory
+  ): AssistedViewModelFactory<*, *>
 }

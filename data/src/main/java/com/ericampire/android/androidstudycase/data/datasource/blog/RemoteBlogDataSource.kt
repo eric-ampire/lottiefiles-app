@@ -17,12 +17,14 @@ class RemoteBlogDataSource @Inject constructor(
     return flow {
       try {
         val data = httpClient.get<BlogApiResponse>(ApiUrl.Blog.latest)
-        emit(Result.Success(data.blogBlogData.blogPage.blogs))
+        val identifiableData = data.data.blogs.results.mapIndexed { index, blog ->
+          blog.copy(id = index.toLong())
+        }
+        emit(Result.Success(identifiableData))
       } catch (e: Exception) {
         emit(Result.Error(e))
       }
     }
-
   }
 
   override suspend fun save(blog: Blog) {

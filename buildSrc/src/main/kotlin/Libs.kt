@@ -18,7 +18,7 @@ object Libs {
 
   const val activity_compose = "androidx.activity:activity-compose:_"
   const val startup_runtime = "androidx.startup:startup-runtime:_"
-  const val navigation_compose = "androidx.navigation:navigation-compose:2.4.0-alpha06"
+  const val navigation_compose = "androidx.navigation:navigation-compose:2.4.0-alpha08"
   const val appcompat = "androidx.appcompat:appcompat:_"
   const val preference_ktx = "androidx.preference:preference-ktx:_"
 

@@ -45,7 +45,7 @@ fun FeaturedLottieFileView(
           Box(
             modifier = modifier
               .background(Color.White)
-              .height(200.dp)
+              .height(170.dp)
               .width(170.dp),
             content = {
               LottieAnimation(
@@ -71,7 +71,9 @@ fun FeaturedLottieFileView(
               Text(
                 text = lottiefile.createdBy?.name ?: "",
                 maxLines = 1,
-                style = MaterialTheme.typography.caption,
+                style = MaterialTheme.typography.caption.copy(
+                  color = Color.Gray
+                ),
               )
             }
           )

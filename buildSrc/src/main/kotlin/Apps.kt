@@ -1,5 +1,5 @@
 object Apps {
-  const val compileSdk = 30
+  const val compileSdk = 31
   const val buildToolsVersion = "30.0.3"
 
   const val applicationId = "com.ericampire.android.androidstudycase"

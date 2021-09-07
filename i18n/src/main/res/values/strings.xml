@@ -14,4 +14,6 @@
     <string name="txt_go_to_explore">Go to Explore</string>
     <string name="txt_login">Login</string>
     <string name="txt_hello_stranger">Hello Stranger</string>
+    <string name="txt_featured_animator">Featured Animators</string>
+    <string name="txt_latest_story">Latest Stories</string>
 </resources>

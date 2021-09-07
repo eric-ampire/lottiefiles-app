@@ -1,6 +1,5 @@
 import de.fayard.refreshVersions.core.versionFor
 
-
 plugins {
   id("com.android.application")
   kotlin("android")
@@ -68,6 +67,7 @@ android {
       excludes += "META-INF/LICENSE.md"
       excludes += "META-INF/LICENSE-notice.md"
       excludes += "META-INF/LGPL2.1"
+      excludes += "META-INF/com/android/build/gradle/aar-metadata.properties"
       excludes += "win32-x86/attach_hotspot_windows.dll"
       excludes += "win32-x86-64/attach_hotspot_windows.dll"
     }
@@ -119,9 +119,9 @@ dependencies {
 
   implementation(Libs.lottie_compose)
 
-  implementation(Libs.orbit_mvi_core)
-  implementation(Libs.orbit_mvi_viewmodel)
-  testImplementation(Libs.orbit_mvi_test)
+  implementation(Libs.mavericks_compose)
+  testImplementation(Libs.mavericks_testing)
+  testImplementation(Libs.mavericks_mocking)
 
   kapt(Libs.room_compiler)
   testImplementation(Libs.room_testing)

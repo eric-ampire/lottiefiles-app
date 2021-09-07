@@ -13,10 +13,14 @@ data class LottieFilesApiResponse(
   val lottieFilesLottieFilesData: LottieFilesData
 )
 
+/**
+ * You can avoid this duplication using @JsonNames annotation
+ */
 @Serializable
 data class LottieFilesData(
-  @SerialName("recent")
-  val page: LottieFilesPage
+  val recent: LottieFilesPage? = null,
+  val featured: LottieFilesPage? = null,
+  val popular: LottieFilesPage? = null,
 )
 
 
@@ -40,6 +44,7 @@ data class Lottiefile(
   var lottieUrl: String = "",
   var gifUrl: String? = "",
   var videoUrl: String? = "",
+  var type: String = "", // For making difference between recent, popular and featured
   var imageUrl: String? = "",
   @ColumnInfo(name = "file_name") var name: String = "",
   var createdAt: String = "",

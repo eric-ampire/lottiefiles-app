@@ -1,12 +1,13 @@
 package com.ericampire.android.androidstudycase.util.mvi
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.airbnb.mvrx.MavericksState
+import com.airbnb.mvrx.MavericksViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
-import org.orbitmvi.orbit.ContainerHost
 
-abstract class BaseViewModel<S: Any, E: Any, A> : ContainerHost<S, E>, ViewModel() {
+abstract class BaseViewModel<S : MavericksState, A>(
+  initialState: S
+) : MavericksViewModel<S>(initialState) {
   protected val pendingAction = MutableSharedFlow<A>()
 
   fun submitAction(action: A) {

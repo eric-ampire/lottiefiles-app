@@ -6,14 +6,16 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.*
+import androidx.compose.material.icons.rounded.ChatBubble
+import androidx.compose.material.icons.rounded.CreateNewFolder
+import androidx.compose.material.icons.rounded.Favorite
+import androidx.compose.material.icons.rounded.Share
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
@@ -72,12 +74,10 @@ fun LottieFileItemView(
                   Text(
                     text = lottiefile.name,
                     style = MaterialTheme.typography.h6,
-                    textAlign = TextAlign.Center,
                   )
                   Text(
                     text = lottiefile.createdBy?.name ?: "",
                     style = MaterialTheme.typography.caption,
-                    textAlign = TextAlign.Center,
                   )
                 }
               )

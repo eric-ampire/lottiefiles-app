@@ -36,8 +36,6 @@ dependencies {
   api(platform(Libs.kotlin_coroutine_bom))
   api(Libs.kotlin_coroutine_core)
 
-  api(Libs.ktor_client_android)
-
   testImplementation(Libs.junit_jupiter_api)
   testImplementation(Libs.junit_jupiter_engine)
 

@@ -12,12 +12,6 @@ interface LottieFilesDao {
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   suspend fun save(lottiefile: Lottiefile)
 
-  @Query("SELECT * FROM Lottiefile")
-  fun findPopular(): Flow<List<Lottiefile>>
-
-  @Query("SELECT * FROM Lottiefile")
-  fun findFeatured(): Flow<List<Lottiefile>>
-
-  @Query("SELECT * FROM Lottiefile")
-  fun findRecent(): Flow<List<Lottiefile>>
+  @Query("SELECT * FROM Lottiefile WHERE type = :type")
+  fun findByType(type: String): Flow<List<Lottiefile>>
 }

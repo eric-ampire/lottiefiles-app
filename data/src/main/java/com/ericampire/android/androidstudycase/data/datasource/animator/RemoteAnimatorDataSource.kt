@@ -17,8 +17,11 @@ class RemoteAnimatorDataSource @Inject constructor(
   override fun findAll(): Flow<Result<List<Animator>>> {
     return flow {
       try {
-        val data = httpClient.get<AnimatorApiResponse>(ApiUrl.Animator.featured)
-        emit(Result.Success(data.animatorAnimatorData.featuredAnimators.results))
+        val result = httpClient.get<AnimatorApiResponse>(ApiUrl.Animator.featured)
+        val identifiableData = result.data.animators.results.mapIndexed { index, animator ->
+          animator.copy(id = index.toLong())
+        }
+        emit(Result.Success(identifiableData))
       } catch (e: Exception) {
         emit(Result.Error(e))
       }

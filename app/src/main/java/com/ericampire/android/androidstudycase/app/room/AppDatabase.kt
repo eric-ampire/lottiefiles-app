@@ -13,7 +13,7 @@ import com.ericampire.android.androidstudycase.domain.entity.User
 
 @Database(
   entities = [Blog::class, Animator::class, Lottiefile::class, User::class],
-  version = 2,
+  version = 1,
   exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

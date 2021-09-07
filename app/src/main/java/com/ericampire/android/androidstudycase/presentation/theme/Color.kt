@@ -14,4 +14,5 @@ object AppColor {
   val Black001 = Color(0xFF222222)
   val BlackOverlay = Color(0x4D000000)
   val BlackOverlay001 = Color(0x1A000000)
+  val WhiteTransparent = Color(0x80FFFFFF)
 }

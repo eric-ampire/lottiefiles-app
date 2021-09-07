@@ -15,10 +15,13 @@ import com.ericampire.android.androidstudycase.domain.repository.AnimatorReposit
 import com.ericampire.android.androidstudycase.domain.repository.BlogRepository
 import com.ericampire.android.androidstudycase.domain.repository.LottieFileRepository
 import com.ericampire.android.androidstudycase.domain.repository.UserRepository
+import com.ericampire.android.androidstudycase.util.IoDispatcher
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
 
 
 @Module
@@ -29,10 +32,14 @@ object RepositoryModule {
   fun provideAnimatorRepository(
     localDataSource: LocalAnimatorDataSource,
     remoteDataSource: RemoteAnimatorDataSource,
+    @IoDispatcher coroutineDispatcher: CoroutineDispatcher,
+    coroutineScope: CoroutineScope
   ): AnimatorRepository {
     return AnimatorRepositoryImpl(
       localDataSource = localDataSource,
-      remoteDataSource = remoteDataSource
+      remoteDataSource = remoteDataSource,
+      coroutineDispatcher = coroutineDispatcher,
+      coroutineScope = coroutineScope
     )
   }
 
@@ -49,10 +56,14 @@ object RepositoryModule {
   fun provideLottieFileRepository(
     localDataSource: LocalLottieFileDataSource,
     remoteDataSource: RemoteLottieFileDataSource,
+    @IoDispatcher coroutineDispatcher: CoroutineDispatcher,
+    coroutineScope: CoroutineScope
   ): LottieFileRepository {
     return LottieFileRepositoryImpl(
       localDataSource = localDataSource,
-      remoteDataSource = remoteDataSource
+      remoteDataSource = remoteDataSource,
+      coroutineDispatcher = coroutineDispatcher,
+      coroutineScope = coroutineScope
     )
   }
 
@@ -60,10 +71,14 @@ object RepositoryModule {
   fun provideBlogRepository(
     localDataSource: LocalBlogDataSource,
     remoteDataSource: RemoteBlogDataSource,
+    @IoDispatcher coroutineDispatcher: CoroutineDispatcher,
+    coroutineScope: CoroutineScope
   ) : BlogRepository {
     return BlogRepositoryImpl(
       localDataSource = localDataSource,
-      remoteDataSource = remoteDataSource
+      remoteDataSource = remoteDataSource,
+      coroutineDispatcher = coroutineDispatcher,
+      coroutineScope = coroutineScope
     )
   }
 }

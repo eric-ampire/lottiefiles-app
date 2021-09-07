@@ -11,19 +11,19 @@ class LocalLottieFileDataSource @Inject constructor(
   private val lottieFileDao: LottieFilesDao
 ) : LottieFileDataSource {
   override fun findRecent(): Flow<Result<List<Lottiefile>>> {
-    return lottieFileDao.findRecent().map {
+    return lottieFileDao.findByType("recent").map {
       Result.Success(it)
     }
   }
 
   override fun findPopular(): Flow<Result<List<Lottiefile>>> {
-    return lottieFileDao.findPopular().map {
+    return lottieFileDao.findByType("popular").map {
       Result.Success(it)
     }
   }
 
   override fun findFeatured(): Flow<Result<List<Lottiefile>>> {
-    return lottieFileDao.findFeatured().map {
+    return lottieFileDao.findByType("featured").map {
       Result.Success(it)
     }
   }

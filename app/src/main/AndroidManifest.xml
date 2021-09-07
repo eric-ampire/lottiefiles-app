@@ -47,6 +47,9 @@
             <meta-data
                 android:name="com.ericampire.android.androidstudycase.app.initializer.TimberInitializer"
                 android:value="androidx.startup" />
+            <meta-data
+                android:name="com.ericampire.android.androidstudycase.app.initializer.MavericksInitializer"
+                android:value="androidx.startup" />
         </provider>
     </application>
 

@@ -11,14 +11,10 @@ import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.CodeScannerView
 import com.ericampire.android.androidstudycase.R
 import com.ericampire.android.androidstudycase.presentation.custom.LottiePreviewDialog
-import com.ericampire.android.androidstudycase.presentation.screen.preview.business.PreviewViewModel
 
 
 @Composable
-fun PreviewScreen(
-  navController: NavController,
-  viewModel: PreviewViewModel
-) {
+fun PreviewScreen(navController: NavController) {
 
   var codeScanner: CodeScanner? = null
   var lottieFileUrl by remember { mutableStateOf("") }

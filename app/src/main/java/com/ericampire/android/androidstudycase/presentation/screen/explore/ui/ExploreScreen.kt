@@ -1,6 +1,6 @@
 package com.ericampire.android.androidstudycase.presentation.screen.explore.ui
 
-import android.widget.Toast
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -18,44 +18,42 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.airbnb.mvrx.Fail
+import com.airbnb.mvrx.Loading
+import com.airbnb.mvrx.Success
+import com.airbnb.mvrx.Uninitialized
+import com.airbnb.mvrx.compose.collectAsState
+import com.airbnb.mvrx.compose.mavericksViewModel
 import com.ericampire.android.androidstudycase.R
 import com.ericampire.android.androidstudycase.domain.entity.Lottiefile
-import com.ericampire.android.androidstudycase.presentation.custom.LoadingView
+import com.ericampire.android.androidstudycase.presentation.custom.LoadingAnimation
 import com.ericampire.android.androidstudycase.presentation.custom.TopActionBar
 import com.ericampire.android.androidstudycase.presentation.screen.explore.business.ExploreAction
-import com.ericampire.android.androidstudycase.presentation.screen.explore.business.ExploreEffect
 import com.ericampire.android.androidstudycase.presentation.screen.explore.business.ExploreViewModel
+import com.ericampire.android.androidstudycase.presentation.screen.explore.business.ExploreViewState
 import com.ericampire.android.androidstudycase.presentation.theme.AppColor
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @ExperimentalMaterialApi
 @ExperimentalPagerApi
 @Composable
 fun ExploreScreen(
   navController: NavController,
-  viewModel: ExploreViewModel
+  viewModel: ExploreViewModel = mavericksViewModel()
 ) {
 
   val coroutineScope = rememberCoroutineScope()
-  val state by viewModel.container.stateFlow.collectAsState()
+  val state by viewModel.collectAsState(ExploreViewState::files)
   val context = LocalContext.current
 
   val tabItems = stringArrayResource(id = R.array.explore_item)
   val pagerState = rememberPagerState(pageCount = tabItems.size)
-
-  LaunchedEffect(viewModel) {
-    viewModel.container.sideEffectFlow.collect {
-      when (it) {
-        is ExploreEffect.ShowErrorMessage -> {
-          Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
-        }
-      }
-    }
-  }
 
   LaunchedEffect(viewModel) {
     viewModel.submitAction(ExploreAction.FindRecentFile)
@@ -122,37 +120,69 @@ fun ExploreScreen(
       )
     },
     content = { contentPadding ->
-      Box(
-        modifier = Modifier
-          .padding(contentPadding)
-          .fillMaxSize(),
-        contentAlignment = Alignment.Center,
-        content = {
-          if (state.isLoading) {
-            LoadingView()
+      Crossfade(modifier = Modifier.padding(contentPadding), targetState = state) {
+        Box(
+          modifier = Modifier.fillMaxSize(),
+          contentAlignment = Alignment.Center,
+          content = {
+            when (it) {
+              Uninitialized -> {
+                LoadingAnimation(
+                  waveColor = MaterialTheme.colors.primary.copy(alpha = 0.5f),
+                  arcColor = MaterialTheme.colors.primaryVariant
+                )
+              }
+              is Loading -> {
+                LoadingAnimation(
+                  waveColor = MaterialTheme.colors.primary.copy(alpha = 0.5f),
+                  arcColor = MaterialTheme.colors.primaryVariant
+                )
+              }
+              is Success -> {
+                val animations = it.invoke()
+                HorizontalPager(state = pagerState) {
+                  ExploreContent(files = animations)
+                }
+              }
+              is Fail -> {
+                Timber.e(it.error.localizedMessage)
+              }
+            }
           }
-          if (state.files.isNotEmpty()) {
-            ExploreContent(files = state.files)
-          }
-        }
-      )
+        )
+      }
     }
   )
 }
 
 @ExperimentalMaterialApi
 @Composable
-fun ExploreContent(
+private fun ExploreContent(
   modifier: Modifier = Modifier,
   files: List<Lottiefile>
 ) {
   LazyColumn(
     modifier = modifier.fillMaxSize(),
     content = {
+
+      item {
+        Divider(
+          modifier = Modifier
+            .background(MaterialTheme.colors.surface)
+            .height(18.dp)
+        )
+      }
+
       items(items = files, key = { it.toString() }) { lottieFile ->
         LottieFileItemView(
           lottiefile = lottieFile,
           onClick = {}
+        )
+
+        Divider(
+          modifier = Modifier
+            .background(MaterialTheme.colors.surface)
+            .height(18.dp)
         )
       }
     }

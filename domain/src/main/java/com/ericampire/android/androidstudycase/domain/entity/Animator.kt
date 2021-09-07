@@ -1,5 +1,6 @@
 package com.ericampire.android.androidstudycase.domain.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.serialization.SerialName
@@ -9,8 +10,10 @@ import kotlinx.serialization.Serializable
 @Serializable
 @Entity
 data class Animator(
+  @ColumnInfo(name = "id_animator")
   @PrimaryKey
-  var name: String = "",
+  val id: Long? = null,
+  val name: String = "",
   var avatarUrl: String = "",
 )
 
@@ -19,10 +22,11 @@ data class FeaturedAnimators(val results: List<Animator>)
 
 @Serializable
 data class AnimatorData(
-  val featuredAnimators: FeaturedAnimators
+  @SerialName("featuredAnimators")
+  val animators: FeaturedAnimators
 )
 
 @Serializable
 data class AnimatorApiResponse(
-  @SerialName("data") val animatorAnimatorData: AnimatorData
+  @SerialName("data") val data: AnimatorData
 )
