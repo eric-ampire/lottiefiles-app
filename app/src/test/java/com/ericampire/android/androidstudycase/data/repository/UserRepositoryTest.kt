@@ -3,8 +3,7 @@ package com.ericampire.android.androidstudycase.data.repository
 import com.ericampire.android.androidstudycase.common.CoroutineDispatcherExtension
 import com.ericampire.android.androidstudycase.common.CoroutineScopeExtension
 import com.ericampire.android.androidstudycase.common.MainCoroutineExtension
-import com.ericampire.android.androidstudycase.data.datasource.animator.AnimatorDataSource
-import com.ericampire.android.androidstudycase.domain.repository.AnimatorRepository
+import com.ericampire.android.androidstudycase.data.datasource.user.UserDataSource
 import com.ericampire.android.androidstudycase.util.PreviewData
 import com.ericampire.android.androidstudycase.util.Result
 import com.ericampire.android.androidstudycase.util.data
@@ -15,11 +14,10 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.TestCoroutineScope
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Assert.assertEquals
+import org.junit.Assert
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import kotlin.time.ExperimentalTime
 
 @ExperimentalCoroutinesApi
 @ExtendWith(
@@ -29,41 +27,40 @@ import kotlin.time.ExperimentalTime
     CoroutineScopeExtension::class
   ]
 )
-class AnimatorRepositoryTest(
+class UserRepositoryTest(
   private val coroutineScope: TestCoroutineScope,
   private val dispatcher: TestCoroutineDispatcher
 ) {
-
-  // SUD
-  private lateinit var repository: AnimatorRepository
+  // SUT
+  private lateinit var repository: UserRepositoryImpl
 
   // DOC's
-  private val remoteDataSource = mockk<AnimatorDataSource>(relaxed = true)
-  private val localDataSource = mockk<AnimatorDataSource>(relaxed = true)
+  private val localDataSource = mockk<UserDataSource>(relaxed = true)
 
   @BeforeEach
   fun setup() {
-    repository = AnimatorRepositoryImpl(
-      remoteDataSource = remoteDataSource,
-      localDataSource = localDataSource,
-      coroutineScope = coroutineScope,
-      coroutineDispatcher = dispatcher
-    )
+    repository = UserRepositoryImpl(localDataSource)
   }
 
-  @ExperimentalTime
   @Test
-  fun findingAllAnimator() = runBlockingTest {
-    every { remoteDataSource.findAll() } returns flowOf(Result.Success(PreviewData.Animator.data))
-    coEvery { localDataSource.save(any()) } just Runs
+  fun findCurrentUser() = runBlockingTest {
+    every { localDataSource.findAll() } returns flowOf(Result.Success(PreviewData.User.data))
 
     repository.findAll().collect {
-      assertEquals(it.data, PreviewData.Animator.data)
+      Assert.assertEquals(it.data, PreviewData.User.data)
     }
 
-    verify(exactly = 1) { remoteDataSource.findAll() }
-    coVerify(exactly = PreviewData.Animator.data.size) {
-      localDataSource.save(any())
+    verify(exactly = 1) { localDataSource.findAll() }
+  }
+
+  @Test
+  fun saveUser() = runBlockingTest {
+    coEvery { localDataSource.save(PreviewData.User.data.first()) } just Runs
+
+    repository.save(PreviewData.User.data.first())
+
+    coVerify(exactly = 1) {
+      localDataSource.save(PreviewData.User.data.first())
     }
   }
 }
