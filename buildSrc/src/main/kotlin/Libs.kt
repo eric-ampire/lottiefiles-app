@@ -148,5 +148,7 @@ object Libs {
 
   const val joda_time = "net.danlew:android.joda:2.10.9"
   const val code_scanner = "com.budiyev.android:code-scanner:2.1.0"
-  const val fetch = "com.mindorks.android:prdownloader:0.6.0"
+
+  const val turbine = "app.cash.turbine:turbine:_"
+  const val pr_downloader = "com.mindorks.android:prdownloader:_"
 }

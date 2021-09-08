@@ -51,5 +51,5 @@ dependencies {
   kapt(Libs.hilt_android_compiler)
 
   api(Libs.timber)
-  api(Libs.fetch)
+  api(Libs.pr_downloader)
 }

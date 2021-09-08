@@ -131,4 +131,7 @@ dependencies {
   androidTestImplementation(Libs.mockk_android)
 
   implementation(Libs.code_scanner)
+
+  testImplementation(Libs.turbine)
+  androidTestImplementation(Libs.turbine)
 }
