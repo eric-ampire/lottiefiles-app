@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.TestCoroutineScope
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Assert
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -57,7 +57,7 @@ class LottieFileRepositoryTest(
     coEvery { localDataSource.save(any()) } just Runs
 
     repository.findFeatured().collect {
-      Assert.assertEquals(it.data, PreviewData.Lottiefile.data)
+      assertEquals(it.data, PreviewData.Lottiefile.data)
     }
 
     verify(exactly = 1) { remoteDataSource.findFeatured() }
@@ -73,7 +73,7 @@ class LottieFileRepositoryTest(
     coEvery { localDataSource.save(any()) } just Runs
 
     repository.findRecent().collect {
-      Assert.assertEquals(it.data, PreviewData.Lottiefile.data)
+      assertEquals(it.data, PreviewData.Lottiefile.data)
     }
 
     verify(exactly = 1) { remoteDataSource.findRecent() }
@@ -89,7 +89,7 @@ class LottieFileRepositoryTest(
     coEvery { localDataSource.save(any()) } just Runs
 
     repository.findPopular().collect {
-      Assert.assertEquals(it.data, PreviewData.Lottiefile.data)
+      assertEquals(it.data, PreviewData.Lottiefile.data)
     }
 
     verify(exactly = 1) { remoteDataSource.findPopular() }

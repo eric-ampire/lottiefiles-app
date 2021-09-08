@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.TestCoroutineScope
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Assert
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -57,7 +57,7 @@ class BlogRepositoryTest(
     coEvery { localDataSource.save(any()) } just Runs
 
     blogRepository.findAll().collect {
-      Assert.assertEquals(it.data, PreviewData.Blog.data)
+      assertEquals(it.data, PreviewData.Blog.data)
     }
 
     verify(exactly = 1) { remoteDataSource.findAll() }
