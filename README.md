@@ -41,6 +41,7 @@ Go to the [Releases](https://github.com/eric-ampire/lottiefiles-app/releases) to
 - [Maverics](https://airbnb.io/mavericks/#/) - Mavericks is an Android MVI framework that is both easy to learn yet powerful enough for the most complex flows
 - [Ktor](https://github.com/square/retrofit) - construct the REST APIs and paging network data.
 - [Timber](https://github.com/JakeWharton/timber) - Logging.
+- [Github Action](https://docs.github.com/en/actions) - CI/CD
 
 ## Challenge and difficulties encountered
 * The API was not complete and the stories and animators returned by the API did not have IDs, I had to find a strategy to assign IDs to data that did not have them to avoid duplication in the database. 
