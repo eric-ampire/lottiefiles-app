@@ -11,7 +11,7 @@ dependencyResolutionManagement {
   repositories {
     google()
     mavenCentral()
-    jcenter() // Warning: this repository is going to shut down soon
+    jcenter() // Todo: Warning this repository is going to shut down soon
   }
 }
 rootProject.name = "lottiefiles"
@@ -20,4 +20,3 @@ include(":util")
 include(":i18n")
 include(":data")
 include(":domain")
-//include(":test-shared")
