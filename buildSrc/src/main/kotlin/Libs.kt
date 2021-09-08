@@ -63,6 +63,9 @@ object Libs {
   const val junit4 = "junit:junit:_"
   const val junit_jupiter_api = "org.junit.jupiter:junit-jupiter-api:_"
   const val junit_jupiter_engine = "org.junit.jupiter:junit-jupiter-engine:_"
+  const val junit_jupiter_params = "org.junit.jupiter:junit-jupiter-params:_"
+
+  const val junit_vintage_engine = "org.junit.vintage:junit-vintage-engine:_"
 
   // Todo: Put this in the version.properties file
   const val firebase_bom = "com.google.firebase:firebase-bom:28.1.0"
