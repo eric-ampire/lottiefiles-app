@@ -68,17 +68,17 @@ object Libs {
   const val junit_vintage_engine = "org.junit.vintage:junit-vintage-engine:_"
 
   // Todo: Put this in the version.properties file
-  const val firebase_bom = "com.google.firebase:firebase-bom:28.1.0"
-  const val firebase_messaging_directboot =
-    "com.google.firebase:firebase-messaging-directboot:20.2.0"
-  const val firebase_crashlytics = "com.google.firebase:firebase-crashlytics-ktx"
-  const val firebase_analytics = "com.google.firebase:firebase-analytics-ktx"
-  const val firebase_auth = "com.google.firebase:firebase-auth-ktx"
-  const val firebase_firestore = "com.google.firebase:firebase-firestore-ktx"
-  const val firebase_storage = "com.google.firebase:firebase-storage-ktx"
-  const val firebase_config = "com.google.firebase:firebase-config-ktx"
-  const val firebase_messaging = "com.google.firebase:firebase-messaging-ktx"
-  const val firebase_in_app_messaging = "com.google.firebase:firebase-inappmessaging-display-ktx"
+  private const val firebase = "com.google.firebase"
+  const val firebase_bom = "$firebase:firebase-bom:28.1.0"
+  const val firebase_messaging_directboot = "$firebase:firebase-messaging-directboot:20.2.0"
+  const val firebase_crashlytics = "$firebase:firebase-crashlytics-ktx"
+  const val firebase_analytics = "$firebase:firebase-analytics-ktx"
+  const val firebase_auth = "$firebase:firebase-auth-ktx"
+  const val firebase_firestore = "$firebase:firebase-firestore-ktx"
+  const val firebase_storage = "$firebase:firebase-storage-ktx"
+  const val firebase_config = "$firebase:firebase-config-ktx"
+  const val firebase_messaging = "$firebase:firebase-messaging-ktx"
+  const val firebase_in_app_messaging = "$firebase:firebase-inappmessaging-display-ktx"
 
   const val kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:_"
 
