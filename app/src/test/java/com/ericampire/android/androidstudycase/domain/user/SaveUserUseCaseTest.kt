@@ -1,10 +1,10 @@
 package com.ericampire.android.androidstudycase.domain.user
 
-import com.ericampire.android.androidstudycase.common.CoroutineDispatcherExtension
-import com.ericampire.android.androidstudycase.common.MainCoroutineExtension
 import com.ericampire.android.androidstudycase.domain.repository.UserRepository
 import com.ericampire.android.androidstudycase.domain.usecase.SaveUserUseCase
 import com.ericampire.android.androidstudycase.util.PreviewData
+import com.ericampire.android.androidstudycase.util.test.CoroutineDispatcherExtension
+import com.ericampire.android.androidstudycase.util.test.MainCoroutineExtension
 import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher

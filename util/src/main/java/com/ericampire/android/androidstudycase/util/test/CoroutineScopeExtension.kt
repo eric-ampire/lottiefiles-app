@@ -1,4 +1,4 @@
-package com.ericampire.android.androidstudycase.common
+package com.ericampire.android.androidstudycase.util.test
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineScope

@@ -1,9 +1,9 @@
 package com.ericampire.android.androidstudycase.data.datasource.blog
 
-import com.ericampire.android.androidstudycase.common.MainCoroutineExtension
 import com.ericampire.android.androidstudycase.data.room.BlogDao
 import com.ericampire.android.androidstudycase.util.PreviewData
 import com.ericampire.android.androidstudycase.util.data
+import com.ericampire.android.androidstudycase.util.test.MainCoroutineExtension
 import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect

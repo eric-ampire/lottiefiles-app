@@ -1,9 +1,9 @@
 package com.ericampire.android.androidstudycase.data.datasource.animator
 
-import com.ericampire.android.androidstudycase.common.MainCoroutineExtension
 import com.ericampire.android.androidstudycase.domain.entity.AnimatorApiResponse
 import com.ericampire.android.androidstudycase.util.ApiUrl
 import com.ericampire.android.androidstudycase.util.PreviewData
+import com.ericampire.android.androidstudycase.util.test.MainCoroutineExtension
 import io.ktor.client.*
 import io.ktor.client.engine.*
 import io.ktor.client.engine.mock.*

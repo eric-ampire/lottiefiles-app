@@ -1,12 +1,12 @@
 package com.ericampire.android.androidstudycase.data.repository
 
-import com.ericampire.android.androidstudycase.common.CoroutineDispatcherExtension
-import com.ericampire.android.androidstudycase.common.CoroutineScopeExtension
-import com.ericampire.android.androidstudycase.common.MainCoroutineExtension
 import com.ericampire.android.androidstudycase.data.datasource.blog.BlogDataSource
 import com.ericampire.android.androidstudycase.util.PreviewData
 import com.ericampire.android.androidstudycase.util.Result
 import com.ericampire.android.androidstudycase.util.data
+import com.ericampire.android.androidstudycase.util.test.CoroutineDispatcherExtension
+import com.ericampire.android.androidstudycase.util.test.CoroutineScopeExtension
+import com.ericampire.android.androidstudycase.util.test.MainCoroutineExtension
 import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect

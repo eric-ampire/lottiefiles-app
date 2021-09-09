@@ -1,11 +1,11 @@
 package com.ericampire.android.androidstudycase.data.datasource.lottiefile
 
-import com.ericampire.android.androidstudycase.common.MainCoroutineExtension
 import com.ericampire.android.androidstudycase.data.datasource.lottiefiles.LocalLottieFileDataSource
 import com.ericampire.android.androidstudycase.data.datasource.lottiefiles.LottieFileDataSource
 import com.ericampire.android.androidstudycase.data.room.LottieFilesDao
 import com.ericampire.android.androidstudycase.util.PreviewData
 import com.ericampire.android.androidstudycase.util.data
+import com.ericampire.android.androidstudycase.util.test.MainCoroutineExtension
 import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect

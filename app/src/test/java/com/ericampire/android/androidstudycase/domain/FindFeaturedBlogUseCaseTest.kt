@@ -1,12 +1,12 @@
 package com.ericampire.android.androidstudycase.domain
 
-import com.ericampire.android.androidstudycase.common.CoroutineDispatcherExtension
-import com.ericampire.android.androidstudycase.common.MainCoroutineExtension
 import com.ericampire.android.androidstudycase.domain.repository.BlogRepository
 import com.ericampire.android.androidstudycase.domain.usecase.FindFeaturedBlogUseCase
 import com.ericampire.android.androidstudycase.util.PreviewData
 import com.ericampire.android.androidstudycase.util.Result
 import com.ericampire.android.androidstudycase.util.data
+import com.ericampire.android.androidstudycase.util.test.CoroutineDispatcherExtension
+import com.ericampire.android.androidstudycase.util.test.MainCoroutineExtension
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -16,7 +16,6 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.jupiter.api.Assertions
-
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
