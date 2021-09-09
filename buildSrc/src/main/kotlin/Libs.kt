@@ -57,6 +57,7 @@ object Libs {
 
   const val hilt_gradle_plugin = "com.google.dagger:hilt-android-gradle-plugin:_"
   const val hilt_android = "com.google.dagger:hilt-android:_"
+  const val hilt_android_testing = "com.google.dagger:hilt-android-testing:_"
   const val hilt_android_compiler = "com.google.dagger:hilt-android-compiler:_"
   const val hilt_navigation_compose = "androidx.hilt:hilt-navigation-compose:1.0.0-alpha03"
 
@@ -157,4 +158,9 @@ object Libs {
   const val pr_downloader = "com.mindorks.android:prdownloader:_"
 
   const val mockito_kotlin = "org.mockito.kotlin:mockito-kotlin:_"
+
+  const val robolectric = "org.robolectric:robolectric:4.4"
+
+  const val junit5_android_test_core = "de.mannodermaus.junit5:android-test-core:_"
+  const val junit5_android_test_runner = "de.mannodermaus.junit5:android-test-runner:_"
 }

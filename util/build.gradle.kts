@@ -39,11 +39,12 @@ dependencies {
 
   api(platform(Libs.kotlin_coroutine_bom))
   api(Libs.kotlin_coroutine_core)
+  implementation(Libs.kotlin_coroutine_test)
 
   api(Libs.mavericks_core)
 
-  testImplementation(Libs.junit_jupiter_api)
-  testImplementation(Libs.junit_jupiter_engine)
+  implementation(Libs.junit_jupiter_api)
+  implementation(Libs.junit_jupiter_engine)
 
   testImplementation(Libs.mockk_core)
 

@@ -10,7 +10,7 @@ buildscript {
   dependencies {
     classpath(Libs.kotlin_gradle_plugin)
     classpath(Libs.gradle_plugin)
-    classpath("com.dicedmelon.gradle:jacoco-android:0.1.5")
+    classpath("de.mannodermaus.gradle.plugins:android-junit5:1.7.1.1")
     classpath(Libs.hilt_gradle_plugin)
   }
 }

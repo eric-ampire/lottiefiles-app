@@ -2,7 +2,7 @@ import de.fayard.refreshVersions.core.versionFor
 
 plugins {
   id("com.android.application")
-  id("com.dicedmelon.gradle.jacoco-android")
+  id("de.mannodermaus.android-junit5")
   kotlin("android")
   kotlin("kapt")
   id("dagger.hilt.android.plugin")
@@ -33,6 +33,10 @@ android {
     versionName = Apps.versionName
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunnerArguments += mapOf(
+      "runnerBuilder" to "de.mannodermaus.junit5.AndroidJUnit5Builder",
+    )
+
     vectorDrawables {
       useSupportLibrary = true
     }
@@ -119,6 +123,9 @@ dependencies {
   testImplementation(Libs.junit_jupiter_api)
   testImplementation(Libs.junit_jupiter_engine)
 
+  androidTestImplementation(Libs.junit_jupiter_api)
+  androidTestImplementation(Libs.junit_jupiter_engine)
+
   implementation(Libs.ksp_api)
 
   implementation(Libs.lottie_compose)
@@ -137,4 +144,8 @@ dependencies {
 
   testImplementation(Libs.turbine)
   androidTestImplementation(Libs.turbine)
+
+  androidTestImplementation(Libs.junit5_android_test_core)
+  testImplementation(Libs.junit5_android_test_core)
+  androidTestRuntimeOnly(Libs.junit5_android_test_runner)
 }

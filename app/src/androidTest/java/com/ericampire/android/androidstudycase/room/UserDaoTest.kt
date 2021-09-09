@@ -1,64 +1,31 @@
 package com.ericampire.android.androidstudycase.room
 
-import android.content.Context
-import androidx.room.Room
-import androidx.test.core.app.ApplicationProvider
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import app.cash.turbine.test
-import com.ericampire.android.androidstudycase.app.room.AppDatabase
 import com.ericampire.android.androidstudycase.data.room.UserDao
+import com.ericampire.android.androidstudycase.room.common.DatabaseTest
 import com.ericampire.android.androidstudycase.util.PreviewData
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.*
-import org.hamcrest.CoreMatchers.equalTo
-import org.hamcrest.MatcherAssert.assertThat
-import org.junit.After
-import org.junit.Before
-import org.junit.Ignore
-import org.junit.Test
-import org.junit.runner.RunWith
-import java.io.IOException
+import kotlinx.coroutines.runBlocking
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import kotlin.time.ExperimentalTime
 
-@RunWith(AndroidJUnit4::class)
-@ExperimentalCoroutinesApi
 @ExperimentalTime
-class UserDaoTest {
-
-  private val testDispatcher = TestCoroutineDispatcher()
-  private val testScope = TestCoroutineScope(testDispatcher)
+class UserDoaTest : DatabaseTest() {
 
   private lateinit var userDao: UserDao
-  private lateinit var db: AppDatabase
 
-  @Before
-  fun setupDispatcher() {
-    Dispatchers.setMain(testDispatcher)
-  }
-
-
-  @Before
-  fun createDb() {
-    val context = ApplicationProvider.getApplicationContext<Context>()
-    db = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java).build()
+  @BeforeEach
+  fun setup() {
     userDao = db.userDao
   }
 
   @Test
-  @Ignore
-  fun saveUser() = testScope.runBlockingTest {
+  fun saveUser() = runBlocking(Dispatchers.IO) {
     userDao.save(PreviewData.User.data.first())
     userDao.findAll().test {
-      assertThat(awaitItem(), equalTo(PreviewData.User.data.first()))
+      assertEquals(awaitItem().first(), PreviewData.User.data.first())
     }
-  }
-
-  @After
-  @Throws(IOException::class)
-  fun teardown() {
-    db.close()
-    Dispatchers.resetMain()
-    testDispatcher.cleanupTestCoroutines()
   }
 }

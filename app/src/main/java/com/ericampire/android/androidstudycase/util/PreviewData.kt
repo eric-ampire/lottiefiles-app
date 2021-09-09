@@ -15,21 +15,25 @@ object PreviewData {
   object Blog {
     val data = listOf(
       Blog(
+        id = 1,
         postedAt = "2021-07-08T00:00:00.000Z",
         imageUrl = "https://d3jl769oy69y7b.cloudfront.net/2021/07/Blog-Visual---The-Key-to-An-Immersive-UX_-Animation.png",
         title = "The Key to An Immersive UX: Animation"
       ),
       Blog(
+        id = 2,
         title = "LottieFiles Animations are accessible across 25,000+ everyday tools with the embed feature",
         postedAt = "2021-06-18T00:00:00.000Z",
         imageUrl = "https://d3jl769oy69y7b.cloudfront.net/2021/06/Embed-Blog-OG.png"
       ),
       Blog(
+        id = 3,
         postedAt = "2021-07-08T00:00:00.000Z",
         imageUrl = "https://d3jl769oy69y7b.cloudfront.net/2021/07/Blog-Visual---The-Key-to-An-Immersive-UX_-Animation.png",
         title = "The Key to An Immersive UX: Animation"
       ),
       Blog(
+        id = 4,
         title = "LottieFiles Animations are accessible across 25,000+ everyday tools with the embed feature",
         postedAt = "2021-06-18T00:00:00.000Z",
         imageUrl = "https://d3jl769oy69y7b.cloudfront.net/2021/06/Embed-Blog-OG.png"
