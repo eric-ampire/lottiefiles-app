@@ -36,6 +36,8 @@ dependencies {
 
   api(platform(Libs.kotlin_coroutine_bom))
   api(Libs.kotlin_coroutine_core)
+  testImplementation(Libs.kotlin_coroutine_test)
+
 
   api(Libs.ktor_client_core)
   api(Libs.ktor_serialization)

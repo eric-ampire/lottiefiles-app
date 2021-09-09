@@ -84,6 +84,7 @@ object Libs {
 
   const val ktor_client_core = "io.ktor:ktor-client-core:_"
   const val ktor_client_cio = "io.ktor:ktor-client-cio:_"
+  const val ktor_client_mock = "io.ktor:ktor-client-mock:_"
   const val ktor_client_android = "io.ktor:ktor-client-android:_"
   const val ktor_serialization = "io.ktor:ktor-client-serialization:_"
 
@@ -154,4 +155,6 @@ object Libs {
 
   const val turbine = "app.cash.turbine:turbine:_"
   const val pr_downloader = "com.mindorks.android:prdownloader:_"
+
+  const val mockito_kotlin = "org.mockito.kotlin:mockito-kotlin:_"
 }

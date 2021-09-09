@@ -2,6 +2,7 @@ import de.fayard.refreshVersions.core.versionFor
 
 plugins {
   id("com.android.application")
+  id("com.dicedmelon.gradle.jacoco-android")
   kotlin("android")
   kotlin("kapt")
   id("dagger.hilt.android.plugin")
@@ -108,6 +109,8 @@ dependencies {
 
   implementation(platform(Libs.kotlin_coroutine_bom))
   testImplementation(Libs.kotlin_coroutine_test)
+
+  testImplementation(Libs.ktor_client_mock)
 
   implementation(Libs.hilt_android)
   implementation(Libs.hilt_navigation_compose)

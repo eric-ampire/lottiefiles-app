@@ -19,6 +19,7 @@ class AnimatorRepositoryImpl @Inject constructor(
   private val coroutineScope: CoroutineScope,
   @IoDispatcher private val coroutineDispatcher: CoroutineDispatcher
 ) : AnimatorRepository {
+
   override fun findAll(): Flow<Result<List<Animator>>> {
     refreshData()
     return localDataSource.findAll()

@@ -15,6 +15,7 @@ import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.After
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.IOException
@@ -45,6 +46,7 @@ class UserDaoTest {
   }
 
   @Test
+  @Ignore
   fun saveUser() = testScope.runBlockingTest {
     userDao.save(PreviewData.User.data.first())
     userDao.findAll().test {
