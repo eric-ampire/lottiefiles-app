@@ -55,7 +55,7 @@ fun ExploreScreen(
   val context = LocalContext.current
 
   val tabItems = stringArrayResource(id = R.array.explore_item)
-  val pagerState = rememberPagerState(pageCount = tabItems.size)
+  val pagerState = rememberPagerState()
 
 
   val bottomSheetState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
@@ -192,7 +192,7 @@ fun ExploreScreen(
                         arcColor = MaterialTheme.colors.primaryVariant
                       )
                     } else {
-                      HorizontalPager(state = pagerState) {
+                      HorizontalPager(state = pagerState, count = tabItems.size) {
                         ExploreContent(
                           files = animations,
                           onShareClick = {
