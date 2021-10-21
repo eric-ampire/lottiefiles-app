@@ -155,6 +155,9 @@ object Libs {
   const val joda_time = "net.danlew:android.joda:2.10.9"
   const val code_scanner = "com.budiyev.android:code-scanner:2.1.0"
 
+  const val compose_destination_core = "io.github.raamcosta.compose-destinations:core:_"
+  const val compose_destination_ksp = "io.github.raamcosta.compose-destinations:ksp:_"
+
   const val turbine = "app.cash.turbine:turbine:_"
   const val pr_downloader = "com.mindorks.android:prdownloader:_"
 
