@@ -191,7 +191,7 @@ fun HomeContent(
         Text(
           modifier = Modifier.padding(horizontal = 16.dp),
           maxLines = 1,
-          text = stringResource(id = R.string.txt_featured_animator),
+          text = stringResource(id = org.zxconnect.android.beserve.i18n.R.string.txt_featured_animator),
           style = MaterialTheme.typography.h4.copy(
             color = MaterialTheme.colors.onSurface
           ),
@@ -219,7 +219,7 @@ fun HomeContent(
         Text(
           modifier = Modifier.padding(horizontal = 16.dp),
           maxLines = 1,
-          text = stringResource(id = R.string.txt_latest_story),
+          text = stringResource(id = org.zxconnect.android.beserve.i18n.R.string.txt_latest_story),
           style = MaterialTheme.typography.h4.copy(
             color = MaterialTheme.colors.onSurface
           ),

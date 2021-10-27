@@ -54,7 +54,7 @@ fun ExploreScreen(
   val state by viewModel.collectAsState(ExploreViewState::files)
   val context = LocalContext.current
 
-  val tabItems = stringArrayResource(id = R.array.explore_item)
+  val tabItems = stringArrayResource(id = org.zxconnect.android.beserve.i18n.R.array.explore_item)
   val pagerState = rememberPagerState()
 
 

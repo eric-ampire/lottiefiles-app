@@ -1,8 +1,5 @@
 plugins {
-    id("de.fayard.refreshVersions") version "0.20.0"
-////                            # available:"0.21.0"
-////                            # available:"0.22.0"
-////                            # available:"0.23.0"
+    id("de.fayard.refreshVersions") version "0.23.0"
 }
 
 refreshVersions {
@@ -17,7 +14,7 @@ dependencyResolutionManagement {
     jcenter() // Todo: Warning this repository is going to shut down soon
   }
 }
-rootProject.name = "lottiefiles"
+rootProject.name = "lottiefiles-app"
 include(":app")
 include(":util")
 include(":i18n")

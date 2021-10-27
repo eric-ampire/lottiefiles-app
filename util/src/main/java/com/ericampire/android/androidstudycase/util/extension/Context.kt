@@ -54,7 +54,7 @@ private fun Context.shareFile(filePath: String) {
   )
 
   val shareIntent = ShareCompat.IntentBuilder(this)
-    .setChooserTitle(getString(R.string.txt_share_lottie_file))
+    .setChooserTitle(getString(org.zxconnect.android.beserve.i18n.R.string.txt_share_lottie_file))
     .setStream(fileUri)
     .setType("application/pdf")
     .createChooserIntent()

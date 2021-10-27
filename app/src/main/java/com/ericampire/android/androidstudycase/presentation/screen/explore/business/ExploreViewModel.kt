@@ -9,7 +9,7 @@ import com.ericampire.android.androidstudycase.domain.usecase.FindPopularLottieF
 import com.ericampire.android.androidstudycase.domain.usecase.FindRecentLottieFileUseCase
 import com.ericampire.android.androidstudycase.util.Result
 import com.ericampire.android.androidstudycase.util.data
-import com.ericampire.android.androidstudycase.util.mvi.BaseViewModel
+import com.ericampire.android.androidstudycase.util.mvi.BViewModel
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -23,7 +23,7 @@ class ExploreViewModel @AssistedInject constructor(
   private val findPopularLottieFileUseCase: FindPopularLottieFileUseCase,
   private val findRecentLottieFileUseCase: FindRecentLottieFileUseCase,
   private val findFeaturedLottieFileUseCase: FindFeaturedLottieFileUseCase
-) : BaseViewModel<ExploreViewState, ExploreAction>(initialState) {
+) : BViewModel<ExploreViewState, ExploreAction>(initialState) {
 
   init {
     viewModelScope.launch {

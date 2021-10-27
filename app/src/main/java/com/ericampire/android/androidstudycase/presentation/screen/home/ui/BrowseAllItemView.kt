@@ -47,14 +47,14 @@ fun BrowseAllItemView(modifier: Modifier = Modifier) {
             modifier = Modifier.padding(end = 12.dp)
           ) {
             Text(
-              text = stringResource(R.string.txt_browse_all),
+              text = stringResource(org.zxconnect.android.beserve.i18n.R.string.txt_browse_all),
               style = MaterialTheme.typography.h4.copy(
                 color = MaterialTheme.colors.onSurface
               ),
             )
 
             Text(
-              text = stringResource(R.string.txt_browse_all_desc),
+              text = stringResource(org.zxconnect.android.beserve.i18n.R.string.txt_browse_all_desc),
               style = MaterialTheme.typography.body1.copy(
                 color = MaterialTheme.colors.onSurface
               ),
@@ -63,7 +63,7 @@ fun BrowseAllItemView(modifier: Modifier = Modifier) {
 
           TextButton(onClick = { /*TODO*/ }) {
             Text(
-              text = stringResource(R.string.txt_go_to_explore),
+              text = stringResource(org.zxconnect.android.beserve.i18n.R.string.txt_go_to_explore),
             )
           }
         }

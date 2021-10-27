@@ -6,7 +6,7 @@ import com.ericampire.android.androidstudycase.app.hilt.hiltMavericksViewModelFa
 import com.ericampire.android.androidstudycase.domain.usecase.*
 import com.ericampire.android.androidstudycase.util.PreviewData
 import com.ericampire.android.androidstudycase.util.data
-import com.ericampire.android.androidstudycase.util.mvi.BaseViewModel
+import com.ericampire.android.androidstudycase.util.mvi.BViewModel
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -23,7 +23,7 @@ class HomeViewModel @AssistedInject constructor(
   private val findUsersUseCase: FindUsersUseCase,
   private val findFeaturedLottieFileUseCase: FindFeaturedLottieFileUseCase,
   private val saveUserUseCase: SaveUserUseCase
-) : BaseViewModel<HomeViewState, HomeAction>(initialState) {
+) : BViewModel<HomeViewState, HomeAction>(initialState) {
 
 
   init {

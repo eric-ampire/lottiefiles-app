@@ -31,7 +31,7 @@ fun TopActionBar(modifier: Modifier = Modifier) {
           Image(
             modifier = Modifier.height(23.dp),
             painter = painterResource(id = R.drawable.ic_lottiefiles_logo),
-            contentDescription = stringResource(id = R.string.txt_lottie_logo)
+            contentDescription = stringResource(id = org.zxconnect.android.beserve.i18n.R.string.txt_lottie_logo)
           )
         }
       )

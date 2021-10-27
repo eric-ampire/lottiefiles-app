@@ -31,6 +31,8 @@ android {
 dependencies {
 
   api(project(":i18n"))
+  api("org.reduxkotlin:redux-kotlin-threadsafe:0.5.5")
+
   implementation(Libs.core_ktx)
   api(Libs.androidx_lifecycle_viewmodel_ktx)
 

@@ -163,4 +163,9 @@ object Libs {
 
   const val junit5_android_test_core = "de.mannodermaus.junit5:android-test-core:_"
   const val junit5_android_test_runner = "de.mannodermaus.junit5:android-test-runner:_"
+
+  const val mvi_kotlin_core = "com.arkivanov.mvikotlin:mvikotlin:_"
+  const val mvi_kotlin_main = "com.arkivanov.mvikotlin:mvikotlin-main:_"
+  const val mvi_kotlin_logging = "com.arkivanov.mvikotlin:mvikotlin-logging:_"
+  const val mvi_kotlin_extension_coroutine = "com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines:_"
 }

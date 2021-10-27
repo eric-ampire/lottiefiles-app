@@ -45,7 +45,7 @@ fun CustomGoogleButton(
           Text(
             style = MaterialTheme.typography.h5,
             color = MaterialTheme.colors.surface,
-            text = stringResource(R.string.txt_connect_with_google)
+            text = stringResource(org.zxconnect.android.beserve.i18n.R.string.txt_connect_with_google)
           )
           Icon(
             tint = Color.Transparent,

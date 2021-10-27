@@ -66,7 +66,7 @@ fun PreviewScreen(navController: NavController) {
         permissionState = cameraPermissionState,
         permissionNotGrantedContent = {
           PermissionNotAvailableContent(
-            descriptionMessage = stringResource(R.string.txt_camera_permssion_required),
+            descriptionMessage = stringResource(org.zxconnect.android.beserve.i18n.R.string.txt_camera_permssion_required),
             onPermissionRequest = {
               cameraPermissionState.launchPermissionRequest()
             }
@@ -74,7 +74,7 @@ fun PreviewScreen(navController: NavController) {
         },
         permissionNotAvailableContent = {
           PermissionNotAvailableContent(
-            descriptionMessage = stringResource(R.string.txt_permission_denied),
+            descriptionMessage = stringResource(org.zxconnect.android.beserve.i18n.R.string.txt_permission_denied),
             onPermissionRequest = {
               cameraPermissionState.launchPermissionRequest()
             }

@@ -37,7 +37,7 @@ fun UnLoggedUserHeaderView(
           .size(57.dp)
           .clip(CircleShape),
         painter = painterResource(id = R.drawable.lottiefiles_circle_logo),
-        contentDescription = stringResource(id = R.string.txt_lottie_logo)
+        contentDescription = stringResource(id = org.zxconnect.android.beserve.i18n.R.string.txt_lottie_logo)
       )
       Column(
         verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -51,7 +51,7 @@ fun UnLoggedUserHeaderView(
           )
           Text(
             maxLines = 1,
-            text = stringResource(R.string.txt_hello_stranger),
+            text = stringResource(org.zxconnect.android.beserve.i18n.R.string.txt_hello_stranger),
             style = MaterialTheme.typography.h3.copy(
               color = AppColor.PaleBlue
             ),
@@ -59,7 +59,7 @@ fun UnLoggedUserHeaderView(
           Text(
             modifier = Modifier.clickable(onClick = onLoginClick),
             maxLines = 1,
-            text = stringResource(R.string.txt_login),
+            text = stringResource(org.zxconnect.android.beserve.i18n.R.string.txt_login),
             style = MaterialTheme.typography.body1.copy(
               color = AppColor.Teal
             ),

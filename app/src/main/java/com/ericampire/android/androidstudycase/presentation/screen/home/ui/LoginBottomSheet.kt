@@ -81,7 +81,7 @@ fun LoginBottomSheet(
           )
           Text(
             textAlign = TextAlign.Center,
-            text = stringResource(id = R.string.txt_get_started),
+            text = stringResource(id = org.zxconnect.android.beserve.i18n.R.string.txt_get_started),
             style = MaterialTheme.typography.body1.copy(
               color = MaterialTheme.colors.onSurface
             ),
