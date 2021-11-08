@@ -7,6 +7,7 @@ plugins {
   kotlin("kapt")
   id("dagger.hilt.android.plugin")
   id("kotlin-android")
+  id("com.google.devtools.ksp") version "1.5.31-1.0.0"
 }
 
 kapt {
@@ -142,6 +143,12 @@ dependencies {
 
   implementation(Libs.code_scanner)
 
+  implementation(Libs.ComposeDestination.core)
+  ksp(Libs.ComposeDestination.ksp)
+
+  implementation(Libs.flowredux)
+  implementation(Libs.flowredux_dsl)
+
   testImplementation(Libs.turbine)
   androidTestImplementation(Libs.turbine)
 
@@ -149,3 +156,4 @@ dependencies {
   testImplementation(Libs.junit5_android_test_core)
   androidTestRuntimeOnly(Libs.junit5_android_test_runner)
 }
+

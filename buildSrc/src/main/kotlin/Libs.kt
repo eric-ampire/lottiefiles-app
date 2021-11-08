@@ -164,6 +164,14 @@ object Libs {
   const val junit5_android_test_core = "de.mannodermaus.junit5:android-test-core:_"
   const val junit5_android_test_runner = "de.mannodermaus.junit5:android-test-runner:_"
 
+  const val flowredux = "com.freeletics.flowredux:flowredux:_"
+  const val flowredux_dsl = "com.freeletics.flowredux:dsl:_"
+
+  object ComposeDestination {
+    const val core = "io.github.raamcosta.compose-destinations:core:_"
+    const val ksp = "io.github.raamcosta.compose-destinations:ksp:_"
+  }
+
   const val mvi_kotlin_core = "com.arkivanov.mvikotlin:mvikotlin:_"
   const val mvi_kotlin_main = "com.arkivanov.mvikotlin:mvikotlin-main:_"
   const val mvi_kotlin_logging = "com.arkivanov.mvikotlin:mvikotlin-logging:_"

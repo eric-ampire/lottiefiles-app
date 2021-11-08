@@ -10,13 +10,31 @@ import com.ericampire.android.androidstudycase.domain.usecase.FindRecentLottieFi
 import com.ericampire.android.androidstudycase.util.Result
 import com.ericampire.android.androidstudycase.util.data
 import com.ericampire.android.androidstudycase.util.mvi.BViewModel
+import com.freeletics.flowredux.dsl.FlowReduxStateMachine
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+
+@OptIn(FlowPreview::class, kotlinx.coroutines.ExperimentalCoroutinesApi::class)
+class Explore(
+  private val findPopularLottieFileUseCase: FindPopularLottieFileUseCase,
+  private val findRecentLottieFileUseCase: FindRecentLottieFileUseCase,
+  private val findFeaturedLottieFileUseCase: FindFeaturedLottieFileUseCase
+) : FlowReduxStateMachine<ExploreState, ExploreAction>(initialState = ExploreState.LoadingState) {
+
+  init {
+    spec {
+      inState<ExploreState.LoadingState> {
+        //onEnter()
+      }
+    }
+  }
+}
 
 class ExploreViewModel @AssistedInject constructor(
   @Assisted initialState: ExploreViewState,
