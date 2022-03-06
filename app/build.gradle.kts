@@ -148,6 +148,7 @@ dependencies {
 
   implementation(Libs.flowredux)
   implementation(Libs.flowredux_dsl)
+  kapt(Libs.sqlite_jdbc)
 
   testImplementation(Libs.turbine)
   androidTestImplementation(Libs.turbine)

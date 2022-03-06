@@ -132,6 +132,7 @@ object Libs {
   const val ksp_api = "com.google.devtools.ksp:symbol-processing-api:1.5.21-1.0.0-beta07"
   const val leakcanary_android = "com.squareup.leakcanary:leakcanary-android:2.7"
 
+
   const val lottie_compose = "com.airbnb.android:lottie-compose:_"
   const val lottie = "com.airbnb.android:lottie:3.7.0"
 
@@ -166,6 +167,8 @@ object Libs {
 
   const val flowredux = "com.freeletics.flowredux:flowredux:_"
   const val flowredux_dsl = "com.freeletics.flowredux:dsl:_"
+
+  const val sqlite_jdbc = "org.xerial:sqlite-jdbc:_"
 
   object ComposeDestination {
     const val core = "io.github.raamcosta.compose-destinations:core:_"
