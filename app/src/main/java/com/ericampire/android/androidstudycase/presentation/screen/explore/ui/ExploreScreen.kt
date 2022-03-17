@@ -16,6 +16,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.airbnb.mvrx.Fail
@@ -252,4 +253,12 @@ private fun ExploreContent(
       }
     }
   )
+}
+
+@Preview
+@Composable
+fun TestPreview() {
+  Column {
+    Text("Hello");Text("Hello");Text("Hello");
+  }
 }
